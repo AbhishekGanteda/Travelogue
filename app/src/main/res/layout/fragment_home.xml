@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -215,7 +214,7 @@
                                 android:orientation="horizontal">
 
                                 <ImageView
-                                    android:id="@+id/profile_image8"
+                                    android:id="@+id/profile_image9"
                                     android:layout_width="30dp"
                                     android:layout_height="30dp"
                                     android:layout_centerHorizontal="true"
@@ -226,7 +225,7 @@
                                     android:src="@drawable/profile" />
 
                                 <TextView
-                                    android:id="@+id/place_name12"
+                                    android:id="@+id/place_name9"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/hostgroteskvariablefont_wght"

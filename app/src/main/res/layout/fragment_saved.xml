@@ -85,7 +85,7 @@
                                     android:orientation="horizontal">
 
                                     <ImageView
-                                        android:id="@+id/profile_image8"
+                                        android:id="@+id/profile_image1"
                                         android:layout_width="40dp"
                                         android:layout_height="40dp"
                                         android:layout_centerHorizontal="true"
@@ -96,7 +96,7 @@
                                         android:src="@drawable/profile" />
 
                                     <TextView
-                                        android:id="@+id/place_name12"
+                                        android:id="@+id/name1"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/hostgroteskvariablefont_wght"
@@ -195,7 +195,7 @@
                                     android:orientation="horizontal">
 
                                     <ImageView
-                                        android:id="@+id/profile_image8"
+                                        android:id="@+id/profile_image2"
                                         android:layout_width="40dp"
                                         android:layout_height="40dp"
                                         android:layout_centerHorizontal="true"
@@ -206,7 +206,7 @@
                                         android:src="@drawable/profile" />
 
                                     <TextView
-                                        android:id="@+id/place_name12"
+                                        android:id="@+id/name2"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/hostgroteskvariablefont_wght"
@@ -306,7 +306,7 @@
                                     android:orientation="horizontal">
 
                                     <ImageView
-                                        android:id="@+id/profile_image8"
+                                        android:id="@+id/profile_image3"
                                         android:layout_width="40dp"
                                         android:layout_height="40dp"
                                         android:layout_centerHorizontal="true"
@@ -317,7 +317,7 @@
                                         android:src="@drawable/profile" />
 
                                     <TextView
-                                        android:id="@+id/place_name12"
+                                        android:id="@+id/name3"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/hostgroteskvariablefont_wght"
