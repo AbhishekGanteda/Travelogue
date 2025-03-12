@@ -55,21 +55,22 @@ class MainActivity : AppCompatActivity() {
         }
 
         signInConfirmButton.setOnClickListener {
-            val intent = Intent(this, bottom::class.java)
+            val intent = Intent(this, Bottom::class.java)
             startActivity(intent)
         }
 
         signUpConfirmButton.setOnClickListener {
             if (signUpContainer.visibility == View.VISIBLE && !isAnimating) {
-                slideDown(signUpContainer)
-            }
-            if (signInContainer.visibility == View.GONE && !isAnimating) {
-                signInContainer.visibility = View.INVISIBLE // Prevent flickering
-                signInContainer.post {
-                    slideUp(signInContainer)
+                slideDown(signUpContainer) {
+                    if (signInContainer.visibility == View.GONE && !isAnimating) {
+                        signInContainer.post {
+                            slideUp(signInContainer)
+                        }
+                    }
                 }
             }
         }
+
     }
 
     private fun slideUp(view: View) {
@@ -93,7 +94,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun slideDown(view: View) {
+    private fun slideDown(view: View, onEnd: (() -> Unit)? = null) {
         isAnimating = true
         view.post {
             val height = view.measuredHeight.toFloat()
@@ -101,15 +102,19 @@ class MainActivity : AppCompatActivity() {
                 duration = 1000
                 setAnimationListener(object : android.view.animation.Animation.AnimationListener {
                     override fun onAnimationStart(animation: android.view.animation.Animation?) {}
+
                     override fun onAnimationEnd(animation: android.view.animation.Animation?) {
                         isAnimating = false
                         view.visibility = View.GONE
+                        onEnd?.invoke() // Executes the callback after animation ends
                     }
+
                     override fun onAnimationRepeat(animation: android.view.animation.Animation?) {}
                 })
             }
             view.startAnimation(animate)
         }
     }
+
 
 }
