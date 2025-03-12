@@ -1,0 +1,19 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+<!-- Base application theme. -->
+<style name="Base.Theme.Travelogue" parent="Theme.Material3.DayNight.NoActionBar">
+    <!-- Customize your light theme here. -->
+    <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+</style>
+
+<style name="Theme.Travelogue" parent="Base.Theme.Travelogue" />
+
+<!-- Custom FAB Shape -->
+<style name="MyFabShape" parent="Widget.MaterialComponents.FloatingActionButton">
+    <item name="shapeAppearanceOverlay">@style/MyFabCorner</item>
+</style>
+
+<style name="MyFabCorner" parent="ShapeAppearanceOverlay.MaterialComponents.FloatingActionButton">
+    <item name="cornerFamily">rounded</item>
+    <item name="cornerSize">50%</item> <!-- Or use dp like 16dp -->
+</style>
+</resources>

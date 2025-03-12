@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:paddingTop="50dp"
+    android:fontFamily="@font/hostgroteskvariablefont_wght"
+    android:layout_width="match_parent"
+    android:background="#F46D3B"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SavedFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/hostgroteskvariablefont_wght"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="Saved Travels"
+            android:textColor="@color/random2"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"> <!-- Background color matches curve -->
+        <!-- Top Curve Background -->
+        <ImageView
+            android:id="@+id/curve_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/curve_bg"
+            android:scaleType="fitXY" />
+
+
+                <ScrollView
+                    android:layout_marginTop="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="490dp">
+
+                    <LinearLayout
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_marginTop="240dp"
+                        android:layout_marginBottom="0dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:layout_gravity="center"
+                            android:padding="15dp"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="6dp">
+
+
+                            <LinearLayout
+                                android:gravity="center"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <ImageView
+                                    android:id="@+id/paris"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="200dp"
+                                    android:scaleType="fitXY"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/paris" />
+
+                                <TextView
+                                    android:id="@+id/place_name1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/hostgroteskvariablefont_wght"
+                                    android:text="Paris"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/black"
+                                    android:gravity="center"
+                                    android:padding="10dp" />
+
+                                <RatingBar
+                                    android:id="@+id/ratingBar1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:layout_gravity="center"
+                            android:padding="15dp"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="6dp">
+
+
+                            <LinearLayout
+                                android:gravity="center"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <ImageView
+                                    android:id="@+id/agra"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="200dp"
+                                    android:scaleType="fitXY"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/agra" />
+
+                                <TextView
+                                    android:id="@+id/place_name2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/hostgroteskvariablefont_wght"
+                                    android:text="Taj Mahal"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/black"
+                                    android:gravity="center"
+                                    android:padding="10dp" />
+
+                                <RatingBar
+                                    android:id="@+id/ratingBar2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:layout_gravity="center"
+                            android:padding="15dp"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="6dp">
+
+
+                            <LinearLayout
+                                android:gravity="center"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <ImageView
+                                    android:id="@+id/dubai"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="200dp"
+                                    android:scaleType="fitXY"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/dubai" />
+
+                                <TextView
+                                    android:id="@+id/place_name3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/hostgroteskvariablefont_wght"
+                                    android:text="Dubai"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/black"
+                                    android:gravity="center"
+                                    android:padding="10dp" />
+
+                                <RatingBar
+                                    android:id="@+id/ratingBar3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <!-- Add more cards/images as needed -->
+
+                    </LinearLayout>
+                </ScrollView>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>
