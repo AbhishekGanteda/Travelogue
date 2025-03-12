@@ -52,125 +52,126 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        <HorizontalScrollView
-            android:layout_marginTop="40dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true"
-            android:scrollbars="none">
-<LinearLayout
-    android:padding="10dp"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <TextView
-        android:layout_gravity="start"
-        android:gravity="start"
-        android:textSize="20dp"
-        android:text="Know persons....."
-        android:fontFamily="@font/hostgroteskvariablefont_wght"
-        android:textStyle="bold"
-        android:layout_margin="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:layout_marginTop="40dp">
 
+                <!-- Fixed TextView -->
+                <TextView
+                    android:layout_gravity="start"
+                    android:gravity="start"
+                    android:textSize="20dp"
+                    android:text="Know persons....."
+                    android:fontFamily="@font/hostgroteskvariablefont_wght"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
-                <ImageView
-                    android:id="@+id/profile_image2"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:layout_centerHorizontal="true"
-                    android:background="@drawable/profile_border"
-                    android:elevation="10dp"
-                    android:padding="4dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/profile" />
-                <ImageView
-                    android:id="@+id/profile_image3"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:layout_centerHorizontal="true"
-                    android:background="@drawable/profile_border"
-                    android:elevation="10dp"
-                    android:padding="4dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/profile" />
-                <ImageView
-                    android:id="@+id/profile_image23"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:layout_centerHorizontal="true"
-                    android:background="@drawable/profile_border"
-                    android:elevation="10dp"
-                    android:padding="4dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/profile" />
-                <ImageView
-                    android:id="@+id/profile_image236"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:layout_centerHorizontal="true"
-                    android:background="@drawable/profile_border"
-                    android:elevation="10dp"
-                    android:padding="4dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/profile" />
-                <ImageView
-                    android:id="@+id/profile_image21"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:layout_centerHorizontal="true"
-                    android:background="@drawable/profile_border"
-                    android:elevation="10dp"
-                    android:padding="4dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/profile" />
-                <ImageView
-                    android:id="@+id/profile_image28"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:layout_centerHorizontal="true"
-                    android:background="@drawable/profile_border"
-                    android:elevation="10dp"
-                    android:padding="4dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/profile" />
-                <ImageView
-                    android:id="@+id/profile_image27"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:layout_centerHorizontal="true"
-                    android:background="@drawable/profile_border"
-                    android:elevation="10dp"
-                    android:padding="4dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/profile" />
+                <!-- Horizontal scrollable area -->
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
 
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <!-- ImageViews -->
+                        <ImageView
+                            android:id="@+id/profile_image2"
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/profile_border"
+                            android:elevation="10dp"
+                            android:padding="4dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/profile" />
+
+                        <ImageView
+                            android:id="@+id/profile_image3"
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/profile_border"
+                            android:elevation="10dp"
+                            android:padding="4dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/profile" />
+
+                        <ImageView
+                            android:id="@+id/profile_image23"
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/profile_border"
+                            android:elevation="10dp"
+                            android:padding="4dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/profile" />
+
+                        <ImageView
+                            android:id="@+id/profile_image236"
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/profile_border"
+                            android:elevation="10dp"
+                            android:padding="4dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/profile" />
+
+                        <ImageView
+                            android:id="@+id/profile_image21"
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/profile_border"
+                            android:elevation="10dp"
+                            android:padding="4dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/profile" />
+
+                        <ImageView
+                            android:id="@+id/profile_image28"
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/profile_border"
+                            android:elevation="10dp"
+                            android:padding="4dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/profile" />
+
+                        <ImageView
+                            android:id="@+id/profile_image27"
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/profile_border"
+                            android:elevation="10dp"
+                            android:padding="4dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/profile" />
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
 
             </LinearLayout>
-
-</LinearLayout>
-
-        </HorizontalScrollView>
 
 
         <ScrollView
@@ -184,6 +185,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -195,7 +198,7 @@
 
 
                     <LinearLayout
-                        android:padding="15dp"
+                        android:layout_marginTop="10dp"
                         android:gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -237,13 +240,11 @@
 
                         <ImageView
                             android:id="@+id/paris"
-                            android:layout_width="300dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="200dp"
-                            android:background="@drawable/bg"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/paris"
-                            android:clipToOutline="true"
-                        android:elevation="4dp" />
+                            android:scaleType="fitXY"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/paris" />
 
 
                         <TextView
@@ -257,7 +258,7 @@
                             android:textStyle="bold"
                             android:textColor="@color/black"
                             android:gravity="center"
-                             />
+                            />
 
                         <RatingBar
                             android:id="@+id/ratingBar1"
@@ -278,7 +279,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="50dp"
                                 android:layout_weight="1"
-                                android:src="@drawable/loc"
+                                android:src="@drawable/location"
                                 android:contentDescription="Location"
                                 android:padding="5dp" />
 
@@ -295,7 +296,6 @@
                         </LinearLayout>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
-
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -307,23 +307,13 @@
 
 
                     <LinearLayout
-                        android:padding="15dp"
+                        android:layout_marginTop="10dp"
                         android:gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
-                        <ImageView
-                            android:id="@+id/paris"
-                            android:layout_width="300dp"
-                            android:layout_height="200dp"
-                            android:background="@drawable/bg"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/paris"
-                            android:clipToOutline="true"
-                            android:elevation="4dp" />
-
                         <LinearLayout
-                            android:layout_margin="5dp"
+                            android:layout_marginBottom="5dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -332,8 +322,8 @@
 
                             <ImageView
                                 android:id="@+id/profile_image8"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
                                 android:layout_centerHorizontal="true"
                                 android:layout_gravity="center"
                                 android:background="@drawable/profile_border"
@@ -357,12 +347,22 @@
 
                         </LinearLayout>
 
+                        <ImageView
+                            android:id="@+id/paris"
+                            android:layout_width="wrap_content"
+                            android:layout_height="200dp"
+                            android:scaleType="fitXY"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/paris" />
+
+
                         <TextView
                             android:id="@+id/place_name1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/hostgroteskvariablefont_wght"
                             android:text="Paris"
+                            android:layout_marginTop="5dp"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             android:textColor="@color/black"
@@ -378,36 +378,31 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
+                            android:paddingBottom="3dp"
+                            android:orientation="horizontal"
                             android:gravity="center"
-                            android:orientation="horizontal">
-
-
-                            <ImageView
-                                android:id="@+id/profile"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_centerHorizontal="true"
-                                android:layout_gravity="center"
-                                android:background="@drawable/profile_border"
-                                android:padding="4dp"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/loc" />
+                            android:weightSum="2">
 
                             <ImageView
-                                android:id="@+id/p"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_centerHorizontal="true"
-                                android:layout_gravity="center"
-                                android:background="@drawable/profile_border"
-                                android:padding="4dp"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/s" />
+                                android:id="@+id/location_icon1"
+                                android:layout_width="0dp"
+                                android:layout_height="50dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/location"
+                                android:contentDescription="Location"
+                                android:padding="5dp" />
+
+                            <ImageView
+                                android:id="@+id/unsave_icon1"
+                                android:layout_width="0dp"
+                                android:layout_height="50dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/s"
+                                android:contentDescription="Edit"
+                                android:padding="5dp" />
 
 
                         </LinearLayout>
-
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
@@ -421,23 +416,13 @@
 
 
                     <LinearLayout
-                        android:padding="15dp"
+                        android:layout_marginTop="10dp"
                         android:gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
-                        <ImageView
-                            android:id="@+id/paris"
-                            android:layout_width="300dp"
-                            android:layout_height="200dp"
-                            android:background="@drawable/bg"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/paris"
-                            android:clipToOutline="true"
-                            android:elevation="4dp" />
-
                         <LinearLayout
-                            android:layout_margin="5dp"
+                            android:layout_marginBottom="5dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -446,8 +431,8 @@
 
                             <ImageView
                                 android:id="@+id/profile_image8"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
                                 android:layout_centerHorizontal="true"
                                 android:layout_gravity="center"
                                 android:background="@drawable/profile_border"
@@ -471,12 +456,22 @@
 
                         </LinearLayout>
 
+                        <ImageView
+                            android:id="@+id/paris"
+                            android:layout_width="wrap_content"
+                            android:layout_height="200dp"
+                            android:scaleType="fitXY"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/paris" />
+
+
                         <TextView
                             android:id="@+id/place_name1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/hostgroteskvariablefont_wght"
                             android:text="Paris"
+                            android:layout_marginTop="5dp"
                             android:textSize="20sp"
                             android:textStyle="bold"
                             android:textColor="@color/black"
@@ -492,36 +487,31 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
+                            android:paddingBottom="3dp"
+                            android:orientation="horizontal"
                             android:gravity="center"
-                            android:orientation="horizontal">
-
-
-                            <ImageView
-                                android:id="@+id/profile"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_centerHorizontal="true"
-                                android:layout_gravity="center"
-                                android:background="@drawable/profile_border"
-                                android:padding="4dp"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/loc" />
+                            android:weightSum="2">
 
                             <ImageView
-                                android:id="@+id/p"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_centerHorizontal="true"
-                                android:layout_gravity="center"
-                                android:background="@drawable/profile_border"
-                                android:padding="4dp"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/s" />
+                                android:id="@+id/location_icon1"
+                                android:layout_width="0dp"
+                                android:layout_height="50dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/location"
+                                android:contentDescription="Location"
+                                android:padding="5dp" />
+
+                            <ImageView
+                                android:id="@+id/unsave_icon1"
+                                android:layout_width="0dp"
+                                android:layout_height="50dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/s"
+                                android:contentDescription="Edit"
+                                android:padding="5dp" />
 
 
                         </LinearLayout>
-
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 

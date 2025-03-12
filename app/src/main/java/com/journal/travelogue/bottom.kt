@@ -32,7 +32,7 @@ class Bottom : AppCompatActivity() {
                 R.id.home -> loadFragment(HomeFragment())
                 R.id.profile -> loadFragment(ProfileFragment())
                 R.id.saved -> loadFragment(SavedFragment())
-                R.id.logout -> loadFragment(LogoutFragment())
+                R.id.settings -> loadFragment(LogoutFragment())
             }
             true
         }
