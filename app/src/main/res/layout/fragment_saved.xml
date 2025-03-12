@@ -75,6 +75,42 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_margin="5dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:id="@+id/profile_image8"
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
+                                        android:layout_centerHorizontal="true"
+                                        android:layout_gravity="center"
+                                        android:background="@drawable/profile_border"
+                                        android:padding="4dp"
+                                        android:scaleType="centerCrop"
+                                        android:src="@drawable/profile" />
+
+                                    <TextView
+                                        android:id="@+id/place_name12"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/hostgroteskvariablefont_wght"
+                                        android:text="Abhishek"
+                                        android:textSize="15sp"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/black"
+                                        android:gravity="start"
+                                        android:padding="5dp" />
+
+
+
+                                </LinearLayout>
+
                                 <ImageView
                                     android:id="@+id/paris"
                                     android:layout_width="wrap_content"
@@ -93,13 +129,44 @@
                                     android:textStyle="bold"
                                     android:textColor="@color/black"
                                     android:gravity="center"
-                                    android:padding="10dp" />
+                                    android:padding="5dp" />
 
                                 <RatingBar
                                     android:id="@+id/ratingBar1"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
                                     />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingBottom="3dp"
+                                    android:orientation="horizontal"
+                                    android:gravity="center"
+                                    android:weightSum="2">
+
+                                    <ImageView
+                                        android:id="@+id/location_icon1"
+                                        android:layout_width="0dp"
+                                        android:layout_height="50dp"
+                                        android:layout_weight="1"
+                                        android:src="@drawable/location"
+                                        android:contentDescription="Location"
+                                        android:padding="5dp" />
+
+                                    <ImageView
+                                        android:id="@+id/unsave_icon1"
+                                        android:layout_width="0dp"
+                                        android:layout_height="50dp"
+                                        android:layout_weight="1"
+                                        android:src="@drawable/unsave"
+                                        android:contentDescription="Edit"
+                                        android:padding="5dp" />
+
+
+                                </LinearLayout>
+
+
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
 
@@ -118,6 +185,42 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_margin="5dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:id="@+id/profile_image8"
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
+                                        android:layout_centerHorizontal="true"
+                                        android:layout_gravity="center"
+                                        android:background="@drawable/profile_border"
+                                        android:padding="4dp"
+                                        android:scaleType="centerCrop"
+                                        android:src="@drawable/profile" />
+
+                                    <TextView
+                                        android:id="@+id/place_name12"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/hostgroteskvariablefont_wght"
+                                        android:text="Abhishek"
+                                        android:textSize="15sp"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/black"
+                                        android:gravity="start"
+                                        android:padding="5dp" />
+
+
+
+                                </LinearLayout>
+
                                 <ImageView
                                     android:id="@+id/agra"
                                     android:layout_width="wrap_content"
@@ -125,6 +228,9 @@
                                     android:scaleType="fitXY"
                                     android:adjustViewBounds="true"
                                     android:src="@drawable/agra" />
+
+
+
 
                                 <TextView
                                     android:id="@+id/place_name2"
@@ -136,13 +242,42 @@
                                     android:textStyle="bold"
                                     android:textColor="@color/black"
                                     android:gravity="center"
-                                    android:padding="10dp" />
+                                    android:padding="5dp" />
 
                                 <RatingBar
                                     android:id="@+id/ratingBar2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
                                     />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingBottom="3dp"
+                                    android:orientation="horizontal"
+                                    android:gravity="center"
+                                    android:weightSum="2">
+
+                                    <ImageView
+                                        android:id="@+id/location_icon2"
+                                        android:layout_width="0dp"
+                                        android:layout_height="50dp"
+                                        android:layout_weight="1"
+                                        android:src="@drawable/location"
+                                        android:contentDescription="Location"
+                                        android:padding="5dp" />
+
+                                    <ImageView
+                                        android:id="@+id/unsave_icon2"
+                                        android:layout_width="0dp"
+                                        android:layout_height="50dp"
+                                        android:layout_weight="1"
+                                        android:src="@drawable/unsave"
+                                        android:contentDescription="Edit"
+                                        android:padding="5dp" />
+
+                                </LinearLayout>
+
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
 
@@ -161,6 +296,42 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_margin="5dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:id="@+id/profile_image8"
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
+                                        android:layout_centerHorizontal="true"
+                                        android:layout_gravity="center"
+                                        android:background="@drawable/profile_border"
+                                        android:padding="4dp"
+                                        android:scaleType="centerCrop"
+                                        android:src="@drawable/profile" />
+
+                                    <TextView
+                                        android:id="@+id/place_name12"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/hostgroteskvariablefont_wght"
+                                        android:text="Abhishek"
+                                        android:textSize="15sp"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/black"
+                                        android:gravity="start"
+                                        android:padding="5dp" />
+
+
+
+                                </LinearLayout>
+
                                 <ImageView
                                     android:id="@+id/dubai"
                                     android:layout_width="wrap_content"
@@ -186,6 +357,35 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
                                     />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingBottom="3dp"
+                                    android:orientation="horizontal"
+                                    android:gravity="center"
+                                    android:weightSum="2">
+
+                                    <ImageView
+                                        android:id="@+id/location_icon3"
+                                        android:layout_width="0dp"
+                                        android:layout_height="50dp"
+                                        android:layout_weight="1"
+                                        android:src="@drawable/location"
+                                        android:contentDescription="Location"
+                                        android:padding="5dp" />
+
+                                    <ImageView
+                                        android:id="@+id/unsave_icon3"
+                                        android:layout_width="0dp"
+                                        android:layout_height="50dp"
+                                        android:layout_weight="1"
+                                        android:src="@drawable/unsave"
+                                        android:contentDescription="Edit"
+                                        android:padding="5dp" />
+
+                                </LinearLayout>
+
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
 
