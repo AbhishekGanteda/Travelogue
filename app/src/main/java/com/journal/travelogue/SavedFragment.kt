@@ -29,7 +29,7 @@ class SavedFragment : Fragment() {
 
                     // Set bottom margin dynamically
                     val params = scrollView.layoutParams as ViewGroup.MarginLayoutParams
-                    params.bottomMargin = navHeight+50
+                    params.bottomMargin = navHeight+100
                     scrollView.layoutParams = params
 
                     bottomNav.viewTreeObserver.removeOnGlobalLayoutListener(this)
