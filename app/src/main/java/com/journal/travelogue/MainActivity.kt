@@ -62,14 +62,17 @@ class MainActivity : AppCompatActivity() {
         signUpConfirmButton.setOnClickListener {
             if (signUpContainer.visibility == View.VISIBLE && !isAnimating) {
                 slideDown(signUpContainer) {
-                    if (signInContainer.visibility == View.GONE && !isAnimating) {
-                        signInContainer.post {
-                            slideUp(signInContainer)
-                        }
+                    // Ensure signUpContainer is completely hidden before showing signInContainer
+                    signUpContainer.visibility = View.GONE
+                    signInContainer.visibility = View.INVISIBLE // Prevent flickering
+
+                    signInContainer.post {
+                        slideUp(signInContainer)
                     }
                 }
             }
         }
+
 
     }
 

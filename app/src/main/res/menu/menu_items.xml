@@ -21,7 +21,7 @@
     <item
         android:id="@+id/saved"
         android:title="Saved"
-        android:icon="@drawable/menu_saved"
+        android:icon="@drawable/save"
         android:fontFamily="@font/hostgroteskvariablefont_wght"
         android:iconTint="@color/darkest"
         android:titleTextColor="@color/dark"/>
