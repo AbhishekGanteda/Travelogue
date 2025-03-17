@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/gradient_bg"
+    android:paddingTop="50dp"
+    android:fontFamily="@font/hostgroteskvariablefont_wght"
+    tools:context=".NewPost">
+
+    <!-- Title -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        >
+
+        <!-- Back Button -->
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/back"
+            android:layout_marginEnd="10dp"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <!-- Title Text -->
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:text="NEW TRAVEL POST"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
+    <!-- Background Curve -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent">
+
+        <ImageView
+            android:id="@+id/curve_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/curve_bg"
+            android:scaleType="fitXY"/>
+
+        <ScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp"
+            android:padding="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/card_bg"
+                android:elevation="8dp"
+                android:padding="20dp"
+                android:layout_margin="8dp"
+                android:clipToPadding="false">
+
+                <!-- Name Field -->
+                <EditText
+                    android:id="@+id/etUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Your Name"
+                    android:background="@drawable/edittext_border"
+                    android:padding="16dp"
+                    android:textColorHint="@color/black"
+                    />
+
+                <!-- Place Name -->
+                <EditText
+                    android:id="@+id/etPlaceName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:hint="Place Name"
+                    android:background="@drawable/edittext_border"
+                    android:padding="16dp"
+                    android:textColorHint="@color/black"
+                    />
+
+                <!-- Description -->
+                <EditText
+                    android:id="@+id/etDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:hint="Short Description"
+                    android:minHeight="120dp"
+                    android:gravity="top"
+                    android:background="@drawable/edittext_border"
+                    android:padding="16dp"
+                    android:textColorHint="@color/black"
+                    />
+
+                <!-- Latitude -->
+                <EditText
+                    android:id="@+id/etLatitude"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:hint="Latitude"
+                    android:inputType="numberDecimal"
+                    android:background="@drawable/edittext_border"
+                    android:padding="16dp"
+                    android:textColorHint="@color/black"
+                    />
+
+                <!-- Longitude -->
+                <EditText
+                    android:id="@+id/etLongitude"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:hint="Longitude"
+                    android:inputType="numberDecimal"
+                    android:background="@drawable/edittext_border"
+                    android:padding="16dp"
+                    android:textColorHint="@color/black"
+                    />
+
+                <!-- Image Upload Section -->
+                <ImageView
+                    android:id="@+id/ivSelectedImage"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/edittext_border"
+                    android:src="@drawable/placeholder"
+                    android:layout_marginBottom="12dp"/>
+
+                <Button
+                    android:id="@+id/btnUploadImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Upload"
+                    android:backgroundTint="#F46D3B"
+                    android:textColor="@color/white"
+                    android:padding="14dp"
+                    android:textSize="16sp"
+                    />
+
+
+                <!-- Save Button -->
+                <Button
+                    android:id="@+id/btnSave"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="POST"
+                    android:backgroundTint="#F46D3B"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="20dp"
+                    android:padding="14dp"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+</LinearLayout>
