@@ -18,11 +18,11 @@ class LogoutFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_logout, container, false)
 
         // Initialize the button correctly
-        val logout: Button = view.findViewById(R.id.btn_logout)
-        logout.setOnClickListener {
-            val intent = Intent(requireContext(), MainActivity::class.java)
-            startActivity(intent)
-        }
+//        val logout: Button = view.findViewById(R.id.btn_logout)
+//        logout.setOnClickListener {
+//            val intent = Intent(requireContext(), MainActivity::class.java)
+//            startActivity(intent)
+//        }
 
 
         return view
