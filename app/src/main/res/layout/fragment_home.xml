@@ -40,11 +40,25 @@
             android:src="@drawable/curve_bg"
             android:scaleType="fitXY" />
 
-            <androidx.recyclerview.widget.RecyclerView
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:iconifiedByDefault="false"
+            android:queryHint="Search..."
+            android:background="@drawable/search_background"
+            android:padding="8dp"
+            android:elevation="4dp"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="90dp"
                 android:padding="8dp" />
 
 
