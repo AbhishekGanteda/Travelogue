@@ -17,8 +17,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:padding="10dp"
-        >
+        android:padding="10dp">
 
         <!-- Back Button -->
         <ImageView
@@ -27,32 +26,23 @@
             android:layout_height="35dp"
             android:scaleType="centerCrop"
             android:src="@drawable/back"
-            android:layout_marginEnd="10dp"
             android:clickable="true"
             android:focusable="true"/>
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"/>
 
         <!-- Title Text -->
         <TextView
             android:id="@+id/titleText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="4"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:fontFamily="@font/hostgroteskvariablefont_wght"
             android:text="NEW TRAVEL POST"
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold"/>
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"/>
-
     </LinearLayout>
+
 
 
     <!-- Background Curve -->
@@ -85,16 +75,6 @@
                 android:layout_margin="8dp"
                 android:clipToPadding="false">
 
-                <!-- Name Field -->
-                <EditText
-                    android:id="@+id/etUserName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Your Name"
-                    android:background="@drawable/edittext_border"
-                    android:padding="16dp"
-                    android:textColorHint="@color/black"
-                    />
 
                 <!-- Place Name -->
                 <EditText
@@ -105,7 +85,7 @@
                     android:hint="Place Name"
                     android:background="@drawable/edittext_border"
                     android:padding="16dp"
-                    android:textColorHint="@color/black"
+                    android:textColor="#000000"
                     />
 
                 <!-- Description -->
@@ -119,7 +99,7 @@
                     android:gravity="top"
                     android:background="@drawable/edittext_border"
                     android:padding="16dp"
-                    android:textColorHint="@color/black"
+                    android:textColor="#000000"
                     />
 
                 <!-- Latitude -->
@@ -132,7 +112,7 @@
                     android:inputType="numberDecimal"
                     android:background="@drawable/edittext_border"
                     android:padding="16dp"
-                    android:textColorHint="@color/black"
+                    android:textColor="#000000"
                     />
 
                 <!-- Longitude -->
@@ -145,7 +125,7 @@
                     android:inputType="numberDecimal"
                     android:background="@drawable/edittext_border"
                     android:padding="16dp"
-                    android:textColorHint="@color/black"
+                    android:textColor="#000000"
                     />
 
                 <!-- Image Upload Section -->
@@ -158,7 +138,9 @@
                     android:scaleType="centerCrop"
                     android:background="@drawable/edittext_border"
                     android:src="@drawable/placeholder"
-                    android:layout_marginBottom="12dp"/>
+                    android:layout_marginBottom="12dp"
+                    android:padding="5dp"
+                    />
 
                 <Button
                     android:id="@+id/btnUploadImage"

@@ -7,7 +7,7 @@
     android:paddingTop="50dp"
     android:fontFamily="@font/hostgroteskvariablefont_wght"
     android:layout_width="match_parent"
-    android:background="#F46D3B"
+    android:background="@color/orange"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".SavedFragment">

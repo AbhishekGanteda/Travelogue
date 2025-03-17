@@ -10,5 +10,8 @@
     <color name="background_color1">#63F5F5F5</color>
     <color name="light_gray">#D3D3D3</color>
     <color name="white">#FFFFFF</color>
+    <color name="background">#FFFFFF</color>
     <color name="red">#FF0000</color>
+    <color name="orange">#F46D3B</color>
+    <color name="description">#757575</color>
 </resources>

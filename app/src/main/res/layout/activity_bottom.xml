@@ -30,7 +30,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_bar"
         android:layout_gravity="bottom"
-        android:background="#F46D3B"
+        android:background="@color/orange"
         android:fontFamily="@font/hostgroteskvariablefont_wght"
         app:menu="@menu/menu_items"
         android:layout_width="match_parent"

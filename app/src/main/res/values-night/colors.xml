@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FFFFFFFF</color> <!-- White text for dark mode -->
+    <color name="darkest">#121212</color> <!-- Dark background -->
+    <color name="random">#0D3A5A</color>
+    <color name="dark">#396D7B</color>
+    <color name="random2">#222222</color> <!-- Darker gray -->
+    <color name="background_color">#121212</color> <!-- Black background -->
+    <color name="gray">#B0B0B0</color> <!-- Light gray for text -->
+    <color name="background_color1">#1E1E1E</color>
+    <color name="light_gray">#A9A9A9</color>
+    <color name="white">#FFFFFF</color>
+    <color name="background">#121212</color>
+    <color name="red">#FF6666</color>
+    <color name="orange">#FF7F50</color>
+    <color name="description">#B0B0B0</color>
+
+</resources>
