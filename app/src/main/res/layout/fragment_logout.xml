@@ -1,35 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:gravity="center"
+    android:id="@+id/main"
+    android:paddingTop="50dp"
+    android:fontFamily="@font/hostgroteskvariablefont_wght"
+    android:layout_width="match_parent"
+    android:background="#F46D3B"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/orange"
     tools:context=".LogoutFragment">
 
-
     <TextView
+        android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/hostgrotesk_variablefont_wght"
-        android:textStyle="bold"
-        android:text="Are you sure you want to logout?"
-        android:textSize="18sp"
-        android:textColor="@color/darkest"
-        android:layout_marginTop="20dp"/>
-
-    <Button
-        android:id="@+id/btn_logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Logout"
-        android:fontFamily="@font/hostgrotesk_variablefont_wght"
-        android:textStyle="bold"
-        android:textAllCaps="false"
+        android:fontFamily="@font/hostgroteskvariablefont_wght"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:text="PROFILE"
         android:textColor="@color/random2"
-        android:backgroundTint="#F46D3B"
-        android:padding="12dp"
-        android:layout_marginTop="20dp"/>
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+
+
+    <RelativeLayout
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="25dp"
+        android:background="@android:color/transparent"> <!-- Background color matches curve -->
+        <!-- Top Curve Background -->
+        <ImageView
+            android:id="@+id/curve_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/curve_bg"
+            android:scaleType="fitXY" />
+
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/profile_border"
+            android:elevation="10dp"
+            android:padding="4dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/profile"
+            />
+
+    </RelativeLayout>
 
 </LinearLayout>
