@@ -68,6 +68,17 @@ class SavedFragment : Fragment() {
                 isSaved = false,
                 latitude = 34.0259,
                 longitude = -118.7798
+            ),
+            TravelItem(
+                userName = "Harry Sumanth",
+                profileImageRes = R.drawable.profile2,
+                travelDescription = "A valley filled with greenery and purity!",
+                placeImageRes = R.drawable.araku,
+                placeName = "Araku, Near Visakhapatnam",
+                isLiked = false,
+                isSaved = false,
+                latitude = 18.3222,
+                longitude = 82.8802
             )
         )
 

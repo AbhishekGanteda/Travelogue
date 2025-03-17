@@ -68,7 +68,30 @@ class HomeFragment : Fragment() {
                 isSaved = false,
                 latitude = 34.0259,
                 longitude = -118.7798
+            ),
+            TravelItem(
+                userName = "Chaitanya Allipuram",
+                profileImageRes = R.drawable.profile1,
+                travelDescription = "Stunning beauty of the seaside village Flic en Flac!",
+                placeImageRes = R.drawable.mauritius,
+                placeName = "Mauritius",
+                isLiked = false,
+                isSaved = false,
+                latitude = 20.2995,
+                longitude = 57.3634
+            ),
+            TravelItem(
+                userName = "Harry Sumanth",
+                profileImageRes = R.drawable.profile2,
+                travelDescription = "A valley filled with greenery and purity!",
+                placeImageRes = R.drawable.araku,
+                placeName = "Araku, Near Visakhapatnam",
+                isLiked = false,
+                isSaved = false,
+                latitude = 18.3222,
+                longitude = 82.8802
             )
+
         )
 
         // Initialize Adapter with pageType "home"
