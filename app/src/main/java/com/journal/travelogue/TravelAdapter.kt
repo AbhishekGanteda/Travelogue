@@ -74,16 +74,12 @@ class TravelAdapter(private val travelList: MutableList<TravelItem>,
 
         // Open Google Maps on Location click
         holder.locationIcon.setOnClickListener {
-            val uri = "geo:${travelItem.latitude},${travelItem.longitude}?q=${Uri.encode(travelItem.placeName)}"
+            val uri = "https://www.google.com/maps/search/?api=1&query=${travelItem.latitude},${travelItem.longitude}"
             val mapIntent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
-            mapIntent.setPackage("com.google.android.apps.maps")
-
-            if (mapIntent.resolveActivity(it.context.packageManager) != null) {
-                it.context.startActivity(mapIntent)
-            } else {
-                Toast.makeText(it.context, "Google Maps not installed", Toast.LENGTH_SHORT).show()
-            }
+            it.context.startActivity(mapIntent)
         }
+
+
 
         // Set visibility based on pageType
         if (pageType == "home" || pageType == "saved") {
