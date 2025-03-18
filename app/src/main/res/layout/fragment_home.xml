@@ -24,6 +24,18 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search..."
+        android:background="@drawable/search_background"
+        android:padding="8dp"
+        android:elevation="4dp"/>
 
 
     <RelativeLayout
@@ -40,18 +52,6 @@
             android:src="@drawable/curve_bg"
             android:scaleType="fitXY" />
 
-        <SearchView
-            android:id="@+id/searchView"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:iconifiedByDefault="false"
-            android:queryHint="Search..."
-            android:background="@drawable/search_background"
-            android:padding="8dp"
-            android:elevation="4dp"/>
 
 
         <androidx.recyclerview.widget.RecyclerView
