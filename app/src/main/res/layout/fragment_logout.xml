@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".LogoutFragment">
 <LinearLayout
     android:id="@+id/main"
     android:paddingTop="50dp"
@@ -72,49 +74,86 @@
         android:layout_height="match_parent"
         android:background="@color/white"> <!-- Background color matches curve -->
         <!-- Top Curve Background -->
-        <LinearLayout
-            android:layout_marginTop="45dp"
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
 
-            <TextView
-                android:textColor="@color/black"
-                android:text="James bond"
-                android:textSize="25dp"
-                android:fontFamily="@font/hostgroteskvariablefont_wght"
-                android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+        <TextView
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:text="James bond"
+            android:textSize="25dp"
+            android:fontFamily="@font/hostgroteskvariablefont_wght"
+            android:textStyle="bold"
+            />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
 
             <TextView
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/hostgroteskvariablefont_wght"
-                android:text="Software Engineer with expertise in front-end development (HTML, CSS, JavaScript) and mobile app development (Kotlin, XML). Skilled in backend technologies, including Express.js and Spring Boot."
+                android:text="Adventure seeker | Foodie | Solo Traveler"
                 android:textSize="15dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                />
 
-        </LinearLayout>
+        </ScrollView>
 
         <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:layout_marginTop="15dp"
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            >
             <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                >
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:gravity="center"
                     android:text="Followers"
+                    android:textSize="17.5dp"
+                    android:fontFamily="@font/hostgroteskvariablefont_wght"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:text="256"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/hostgroteskvariablefont_wght"
+                    android:textStyle="bold"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginLeft="25dp"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:text="Following"
                     android:textSize="17.5dp"
                     android:fontFamily="@font/hostgroteskvariablefont_wght"
                     android:textStyle="bold"
@@ -123,7 +162,7 @@
                 <TextView
                     android:textColor="@color/black"
                     android:gravity="center"
-                    android:text="25k"
+                    android:text="103"
                     android:textSize="15dp"
                     android:fontFamily="@font/hostgroteskvariablefont_wght"
                     android:textStyle="bold"
@@ -132,16 +171,18 @@
 
             </LinearLayout>
             <LinearLayout
-                android:layout_gravity="center"
-                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:layout_marginLeft="25dp"
+                android:gravity="center"
+                android:layout_gravity="center"
                 android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                >
                 <TextView
                     android:textColor="@color/black"
                     android:gravity="center"
-                    android:text="Followers"
+                    android:text="Posts"
                     android:textSize="17.5dp"
                     android:fontFamily="@font/hostgroteskvariablefont_wght"
                     android:textStyle="bold"
@@ -150,34 +191,7 @@
                 <TextView
                     android:textColor="@color/black"
                     android:gravity="center"
-                    android:text="25k"
-                    android:textSize="15dp"
-                    android:fontFamily="@font/hostgroteskvariablefont_wght"
-                    android:textStyle="bold"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginLeft="25dp"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
-                    android:textColor="@color/black"
-                    android:gravity="center"
-                    android:text="Followers"
-                    android:textSize="17.5dp"
-                    android:fontFamily="@font/hostgroteskvariablefont_wght"
-                    android:textStyle="bold"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
-                    android:textColor="@color/black"
-                    android:gravity="center"
-                    android:text="25k"
+                    android:text="25"
                     android:textSize="15dp"
                     android:fontFamily="@font/hostgroteskvariablefont_wght"
                     android:textStyle="bold"
@@ -187,9 +201,11 @@
             </LinearLayout>
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:orientation="vertical"
             android:padding="5dp"
 >
@@ -311,4 +327,4 @@
     </LinearLayout>
 
 </LinearLayout>
-</ScrollView>
+</LinearLayout>
