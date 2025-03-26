@@ -90,60 +90,144 @@
             android:gravity="center"
             android:weightSum="5">
 
-            <ImageView
-                android:id="@+id/like"
+            <LinearLayout
+                android:id="@+id/likeContainer"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/like"
-                android:contentDescription="Like"
-                android:padding="5dp"
+                android:gravity="center"
+                android:orientation="vertical"
                 android:visibility="gone"
-                />
-            <ImageView
-                android:id="@+id/save"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:src="@drawable/save"
-                android:contentDescription="Unsave"
-                android:padding="5dp"
-                android:visibility="gone"
-                /> <!-- Default hidden -->
+                >
 
-            <ImageView
-                android:id="@+id/edit"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:src="@drawable/edit"
-                android:contentDescription="Edit"
-                android:padding="5dp"
-                android:visibility="gone"
-                /> <!-- Default hidden -->
+                <ImageView
+                    android:id="@+id/like"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/like"
+                    android:contentDescription="Like"
+                    android:padding="5dp"
+                    />
 
-            <ImageView
-                android:id="@+id/delete"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:src="@drawable/delete"
-                android:contentDescription="Delete"
-                android:padding="5dp"
-                android:visibility="gone"
-                /> <!-- Default hidden -->
+                <TextView
+                    android:id="@+id/like_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"
+                    android:text="0"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    />
+            </LinearLayout>
 
-            <ImageView
-                android:id="@+id/location"
+            <LinearLayout
+                android:id="@+id/savedContainer"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/location"
-                android:contentDescription="Location"
-                android:padding="5dp"
+                android:gravity="center"
+                android:orientation="vertical"
                 android:visibility="gone"
-                /> <!-- Default hidden -->
+                >
+
+                <ImageView
+                    android:id="@+id/save"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/save"
+                    android:contentDescription="Save"
+                    android:padding="5dp"
+                    />
+
+                <TextView
+                    android:id="@+id/save_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"
+                    android:text="0"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/editContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone"
+                >
+
+                <ImageView
+                    android:id="@+id/edit"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/edit"
+                    android:contentDescription="Edit"
+                    android:padding="5dp"
+                    />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/deleteContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone"
+                >
+
+                <ImageView
+                    android:id="@+id/delete"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/delete"
+                    android:contentDescription="Delete"
+                    android:padding="5dp"
+                    />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/locationContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone"
+                >
+
+                <ImageView
+                    android:id="@+id/location"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/location"
+                    android:contentDescription="Location"
+                    android:padding="5dp"
+                    />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"
+                    />
+            </LinearLayout>
+
         </LinearLayout>
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

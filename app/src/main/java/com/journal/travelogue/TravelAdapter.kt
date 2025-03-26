@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
@@ -27,6 +28,13 @@ class TravelAdapter(private val travelList: MutableList<TravelItem>,
         val editIcon: ImageView = view.findViewById(R.id.edit)
         val deleteIcon: ImageView = view.findViewById(R.id.delete)
         val locationIcon: ImageView = view.findViewById(R.id.location)
+        val likeContainer: LinearLayout = view.findViewById(R.id.likeContainer)
+        val savedContainer: LinearLayout = view.findViewById(R.id.savedContainer)
+        val editContainer: LinearLayout = view.findViewById(R.id.editContainer)
+        val deleteContainer: LinearLayout = view.findViewById(R.id.deleteContainer)
+        val locationContainer: LinearLayout = view.findViewById(R.id.locationContainer)
+        val likeText : TextView = view.findViewById(R.id.like_count)
+        val saveText : TextView = view.findViewById(R.id.save_count)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TravelViewHolder {
@@ -50,14 +58,27 @@ class TravelAdapter(private val travelList: MutableList<TravelItem>,
 
         // Handle Like action
         holder.likeIcon.setOnClickListener {
+            if (travelItem.isLiked) {
+                travelItem.likeCount -= 1
+            } else {
+                travelItem.likeCount += 1
+            }
             travelItem.isLiked = !travelItem.isLiked
-            notifyItemChanged(position)
+            holder.likeIcon.setImageResource(if (travelItem.isLiked) R.drawable.liked else R.drawable.like)
+            holder.likeText.text = travelItem.likeCount.toString() // Update text view
         }
+
 
         // Handle Save action
         holder.saveIcon.setOnClickListener {
+            if (travelItem.isSaved) {
+                travelItem.savedCount -= 1
+            } else {
+                travelItem.savedCount += 1
+            }
             travelItem.isSaved = !travelItem.isSaved
-            notifyItemChanged(position)
+            holder.saveIcon.setImageResource(if (travelItem.isSaved) R.drawable.saved else R.drawable.save)
+            holder.saveText.text = travelItem.savedCount.toString() // Update text view
         }
 
         // Handle Edit action
@@ -83,19 +104,19 @@ class TravelAdapter(private val travelList: MutableList<TravelItem>,
 
         // Set visibility based on pageType
         if (pageType == "home" || pageType == "saved") {
-            holder.locationIcon.visibility = View.VISIBLE
-            holder.likeIcon.visibility = View.VISIBLE
-            holder.saveIcon.visibility = View.VISIBLE
+            holder.locationContainer.visibility = View.VISIBLE
+            holder.likeContainer.visibility = View.VISIBLE
+            holder.savedContainer.visibility = View.VISIBLE
 
-            holder.editIcon.visibility = View.GONE
-            holder.deleteIcon.visibility = View.GONE
+            holder.editContainer.visibility = View.GONE
+            holder.deleteContainer.visibility = View.GONE
         } else if (pageType == "profile") {
-            holder.locationIcon.visibility = View.VISIBLE
-            holder.editIcon.visibility = View.VISIBLE
-            holder.deleteIcon.visibility = View.VISIBLE
+            holder.locationContainer.visibility = View.VISIBLE
+            holder.editContainer.visibility = View.VISIBLE
+            holder.deleteContainer.visibility = View.VISIBLE
 
-            holder.likeIcon.visibility = View.GONE
-            holder.saveIcon.visibility = View.GONE
+            holder.likeContainer.visibility = View.VISIBLE
+            holder.savedContainer.visibility = View.VISIBLE
         }
 
     }
