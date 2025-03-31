@@ -78,7 +78,7 @@
 
                 <!-- Place Name -->
                 <EditText
-                    android:id="@+id/etPlaceName"
+                    android:id="@+id/placeName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
@@ -90,7 +90,7 @@
 
                 <!-- Description -->
                 <EditText
-                    android:id="@+id/etDescription"
+                    android:id="@+id/description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
@@ -104,7 +104,7 @@
 
                 <!-- Latitude -->
                 <EditText
-                    android:id="@+id/etLatitude"
+                    android:id="@+id/latitude"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
@@ -117,7 +117,7 @@
 
                 <!-- Longitude -->
                 <EditText
-                    android:id="@+id/etLongitude"
+                    android:id="@+id/longitude"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"

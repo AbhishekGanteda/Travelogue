@@ -73,7 +73,7 @@ class LogoutFragment : Fragment() {
         user?.let {
             nameText.text = it.name
             Glide.with(requireContext())
-                .load("http://10.123.13.22:5000" + it.profile_image)
+                .load("http://10.123.34.196:5000" + it.profile_image)
                 .placeholder(R.drawable.profile)
                 .into(profileImage)
         }
