@@ -8,7 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
-    private const val BASE_URL = "http://10.123.52.128:5000"
+    private const val BASE_URL = "http://10.123.13.22:5000"
 
     val instance: ApiService by lazy {
         val context = MyApplication.instance.applicationContext
@@ -23,7 +23,11 @@ object RetrofitClient {
     private fun provideOkHttpClient(context: Context): OkHttpClient {
         val tokenProvider = {
             val sharedPref = context.getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
-            sharedPref.getString("TOKEN", null)
+            val token = sharedPref.getString("TOKEN", null)
+            if (token == null) {
+                sharedPref.edit().remove("TOKEN").apply()
+            }
+            token
         }
         val authInterceptor = AuthInterceptor(tokenProvider)
         return OkHttpClient.Builder()

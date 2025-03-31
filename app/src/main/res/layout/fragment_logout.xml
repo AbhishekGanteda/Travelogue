@@ -21,38 +21,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center_vertical">
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"/>
+        android:gravity="center">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="PROFILE"
             android:textColor="@color/white"
             android:fontFamily="@font/hostgrotesk_variablefont_wght"
             android:textSize="26sp"
             android:textStyle="bold"
-            android:gravity="center"
-            android:layout_weight="10"/> <!-- Makes it perfectly center-aligned -->
+            /> <!-- Makes it perfectly center-aligned -->
 
-        <ImageButton
-            android:id="@+id/menu"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight="1"
-            android:background="@drawable/menu"
-            android:scaleType="centerCrop"
-            android:layout_marginEnd="10dp"
-            />
     </LinearLayout>
 
 
     <ImageView
-        android:id="@+id/user_image"
+        android:id="@+id/userImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="left"
@@ -77,7 +62,7 @@
         <!-- Top Curve Background -->
 
         <TextView
-            android:id="@+id/user_name"
+            android:id="@+id/userName"
             android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -87,24 +72,6 @@
             android:fontFamily="@font/hostgroteskvariablefont_wght"
             android:textStyle="bold"
             />
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp">
-
-            <TextView
-                android:id="@+id/user_bio"
-                android:textColor="@color/black"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/hostgroteskvariablefont_wght"
-                android:text="Adventure seeker | Foodie | Solo Traveler"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                />
-
-        </ScrollView>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -205,6 +172,44 @@
                     android:layout_height="wrap_content"/>
 
             </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+
+            <Button
+                android:id="@+id/edit"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="5"
+                android:text="Edit"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/orange"
+                />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                />
+
+            <Button
+                android:id="@+id/logout"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="5"
+                android:text="Logout"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/orange"
+                />
 
         </LinearLayout>
 

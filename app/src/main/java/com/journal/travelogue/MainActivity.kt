@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.Gson
 import com.journal.travelogue.api.RetrofitClient
 import com.journal.travelogue.models.LoginResponse
 import com.journal.travelogue.models.User
@@ -98,7 +99,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             // Create a User object
-            val user = User(email = email, password = password)
+            val user = User(email = email, password_hash = password)
 
             // Call the loginUser function
             loginUser(user)
@@ -154,7 +155,7 @@ class MainActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val user = User(name = name, email = email, password = password)
+            val user = User(name = name, email = email, password_hash = password)
             registerUser(user)
         }
 
@@ -233,7 +234,7 @@ class MainActivity : AppCompatActivity() {
                     val user = loginResponse?.user
 
                     // Save token in SharedPreferences
-                    saveToken(token)
+                    save(token,user)
 
                     // Save user information if needed
                     val intent = Intent(this@MainActivity, Bottom::class.java)
@@ -250,13 +251,17 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun saveToken(token: String?) {
+    private fun save(token: String?, user : User?) {
         val sharedPref = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
         val editor = sharedPref.edit()
         token?.let {
             editor.putString("TOKEN", it)
-            editor.apply()
         }
+        user?.let {
+            val userJson = Gson().toJson(it)  // Convert User object to JSON
+            editor.putString("USER", userJson)
+        }
+        editor.apply()
     }
 
 }

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@drawable/card_bg"
+    android:elevation="8dp"
+    android:layout_margin="8dp"
+    android:clipToPadding="false">
+        <!-- Place Name -->
+        <EditText
+            android:id="@+id/editName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:hint="Name"
+            android:background="@drawable/edittext_border"
+            android:padding="16dp"
+            android:textColor="#000000"
+            />
+
+        <!-- Latitude -->
+        <EditText
+            android:id="@+id/editEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:hint="Email"
+            android:background="@drawable/edittext_border"
+            android:padding="16dp"
+            android:textColor="#000000"
+            />
+        <!-- Image Upload Section -->
+        <ImageView
+            android:id="@+id/selectedImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:background="@drawable/edittext_border"
+            android:src="@drawable/placeholder"
+            android:layout_marginBottom="12dp"
+            android:padding="5dp"
+            />
+
+        <Button
+            android:id="@+id/uploadImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Upload"
+            android:backgroundTint="#F46D3B"
+            android:textColor="@color/white"
+            android:padding="14dp"
+            android:textSize="16sp"
+            />
+
+
+        <!-- Save Button -->
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:padding="14dp"
+            android:text="DONE"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:backgroundTint="#F46D3B"
+            />
+</LinearLayout>
