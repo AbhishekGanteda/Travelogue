@@ -47,28 +47,7 @@ class ProfileFragment : Fragment() {
 
         // Create sample data
         travelList = mutableListOf(
-            TravelItem(
-                userName = "John Doe",
-                profileImageRes = R.drawable.profile1,
-                travelDescription = "Exploring the beauty of Paris!",
-                placeImageRes = R.drawable.paris,
-                placeName = "Eiffel Tower, Paris",
-                isLiked = false,
-                isSaved = false,
-                latitude = 48.8584,
-                longitude = 2.2945
-            ),
-            TravelItem(
-                userName = "Alice Smith",
-                profileImageRes = R.drawable.profile2,
-                travelDescription = "World's tallest building!",
-                placeImageRes = R.drawable.dubai,
-                placeName = "Burj Khalifa, Dubai",
-                isLiked = true,
-                isSaved = false,
-                latitude = 34.0259,
-                longitude = -118.7798
-            )
+
         )
 
         // Initialize Adapter with pageType "profile"

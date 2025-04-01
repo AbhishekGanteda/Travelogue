@@ -1,7 +1,9 @@
 package com.journal.travelogue.api
 
+import com.journal.travelogue.models.Like
 import com.journal.travelogue.models.LoginResponse
 import com.journal.travelogue.models.Post
+import com.journal.travelogue.models.Save
 import com.journal.travelogue.models.User
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -35,4 +37,57 @@ interface ApiService {
         @Part image: MultipartBody.Part?
     ): Call<Post>
 
+    @GET("api/posts/all/{userId}")
+    fun getAllPosts(
+        @Path("userId") userId: Int?
+    ) : Call<List<Post>>
+
+    @GET("api/users/{id}")
+    fun getUserById(
+        @Path("id") id : Int?,
+    ): Call<User>
+
+    @GET("api/likes/liked/{postId}")
+    fun postLikedOrNot(
+        @Path("postId") postId: Int?,
+        @Query("userId") userId: Int?
+    ): Call<Map<String, Boolean>>
+
+    @GET("api/saved/saved/{postId}")
+    fun postSavedOrNot(
+        @Path("postId") postId: Int?,
+        @Query("userId") userId: Int?
+    ): Call<Map<String, Boolean>>
+
+    @GET("api/likes/{postId}")
+    fun getLikesCount(
+        @Path("postId") postId: Int?,
+    ): Call<Int>
+
+    @GET("api/saved/{postId}")
+    fun getSavedCount(
+        @Path("postId") postId: Int?,
+    ): Call<Int>
+
+    @POST("api/likes")
+    fun addToLikeTable(
+        @Body details:Map<String,Int?>
+    ): Call<Like>
+
+    @DELETE("api/likes/{userId}/{postId}")
+    fun removeFromLikeTable(
+        @Path("userId") userId: Int?,
+        @Path("postId") postId: Int?
+    ): Call<String>
+
+    @POST("api/saved")
+    fun addToSavedTable(
+        @Body details:Map<String,Int?>
+    ): Call<Save>
+
+    @DELETE("api/saved/{userId}/{postId}")
+    fun removeFromSavedTable(
+        @Path("userId") userId: Int?,
+        @Path("postId") postId: Int?
+    ): Call<String>
 }

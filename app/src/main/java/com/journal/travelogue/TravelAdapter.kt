@@ -1,7 +1,10 @@
 package com.journal.travelogue
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,11 +13,23 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.google.gson.Gson
+import com.journal.travelogue.api.RetrofitClient
+import com.journal.travelogue.models.Like
+import com.journal.travelogue.models.Save
+import com.journal.travelogue.models.User
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class TravelAdapter(private val travelList: MutableList<TravelItem>,
                     private val pageType: String ) :
     RecyclerView.Adapter<TravelAdapter.TravelViewHolder>() {
+    private var user: User? = null
+    private lateinit var sharedPreferences: android.content.SharedPreferences
 
     class TravelViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val cardView: CardView = view.findViewById(R.id.card_view)
@@ -33,13 +48,15 @@ class TravelAdapter(private val travelList: MutableList<TravelItem>,
         val editContainer: LinearLayout = view.findViewById(R.id.editContainer)
         val deleteContainer: LinearLayout = view.findViewById(R.id.deleteContainer)
         val locationContainer: LinearLayout = view.findViewById(R.id.locationContainer)
-        val likeText : TextView = view.findViewById(R.id.like_count)
-        val saveText : TextView = view.findViewById(R.id.save_count)
+        var likeText : TextView = view.findViewById(R.id.like_count)
+        var saveText : TextView = view.findViewById(R.id.save_count)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TravelViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.travel_card, parent, false)
+        sharedPreferences = view.context.getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+        loadUserData()
         return TravelViewHolder(view)
     }
 
@@ -47,39 +64,68 @@ class TravelAdapter(private val travelList: MutableList<TravelItem>,
         val travelItem = travelList[position]
 
         holder.userName.text = travelItem.userName
-        holder.profileImage.setImageResource(travelItem.profileImageRes)
         holder.travelDescription.text = travelItem.travelDescription
-        holder.placeImage.setImageResource(travelItem.placeImageRes)
         holder.placeName.text = travelItem.placeName
+        holder.likeText.text = travelItem.likeCount.toString()
+        holder.saveText.text = travelItem.savedCount.toString()
+
+        Glide.with(holder.itemView.context)
+            .load("http://10.123.24.241:5000" + travelItem.profileImageRes) // Use URL instead of resource ID
+            .placeholder(R.drawable.profile)
+            .error(R.drawable.profile)
+            .into(holder.profileImage)
+
+        Glide.with(holder.itemView.context)
+            .load("http://10.123.24.241:5000/uploads/" + travelItem.placeImageRes) // Use URL instead of resource ID
+            .placeholder(R.drawable.noimage)
+            .error(R.drawable.noimage)
+            .into(holder.placeImage)
 
         // Toggle Like & Save icons dynamically
-        holder.likeIcon.setImageResource(if (travelItem.isLiked) R.drawable.liked else R.drawable.like)
-        holder.saveIcon.setImageResource(if (travelItem.isSaved) R.drawable.saved else R.drawable.save)
+        holder.likeIcon.setImageResource(if (travelItem.isLiked ?: false) R.drawable.liked else R.drawable.like)
+        holder.saveIcon.setImageResource(if (travelItem.isSaved ?: false) R.drawable.saved else R.drawable.save)
 
         // Handle Like action
         holder.likeIcon.setOnClickListener {
-            if (travelItem.isLiked) {
-                travelItem.likeCount -= 1
-            } else {
-                travelItem.likeCount += 1
-            }
-            travelItem.isLiked = !travelItem.isLiked
-            holder.likeIcon.setImageResource(if (travelItem.isLiked) R.drawable.liked else R.drawable.like)
-            holder.likeText.text = travelItem.likeCount.toString() // Update text view
-        }
+            travelItem.isLiked = !(travelItem.isLiked ?: false)
 
+            // Update Like Count Immediately
+            if (travelItem.isLiked == true) {
+                travelItem.likeCount = (travelItem.likeCount ?: 0) + 1
+                addToLikeTable(travelItem)
+            } else {
+                travelItem.likeCount = (travelItem.likeCount ?: 0) - 1
+                removeFromLikeTable(travelItem)
+            }
+
+            // Update UI
+            holder.likeIcon.setImageResource(if (travelItem.isLiked == true) R.drawable.liked else R.drawable.like)
+            holder.likeText.text = travelItem.likeCount.toString() // Update TextView
+
+            notifyItemChanged(position) // Refresh only the changed item
+        }
 
         // Handle Save action
         holder.saveIcon.setOnClickListener {
-            if (travelItem.isSaved) {
-                travelItem.savedCount -= 1
+            travelItem.isSaved = !(travelItem.isSaved ?: false)
+
+            // Update Save Count Immediately
+            if (travelItem.isSaved == true) {
+                travelItem.savedCount = (travelItem.savedCount ?: 0) + 1
+                addToSavedTable(travelItem)
             } else {
-                travelItem.savedCount += 1
+                travelItem.savedCount = (travelItem.savedCount ?: 0) - 1
+                removeFromSavedTable(travelItem)
             }
-            travelItem.isSaved = !travelItem.isSaved
-            holder.saveIcon.setImageResource(if (travelItem.isSaved) R.drawable.saved else R.drawable.save)
-            holder.saveText.text = travelItem.savedCount.toString() // Update text view
+
+            // Update UI
+            holder.saveIcon.setImageResource(if (travelItem.isSaved == true) R.drawable.saved else R.drawable.save)
+            holder.saveText.text = travelItem.savedCount.toString() // Update TextView
+
+            notifyItemChanged(position) // Refresh only the changed item
         }
+
+
 
         // Handle Edit action
         holder.editIcon.setOnClickListener {
@@ -121,6 +167,88 @@ class TravelAdapter(private val travelList: MutableList<TravelItem>,
 
     }
 
-
     override fun getItemCount(): Int = travelList.size
+
+    private fun loadUserData() {
+        val userJson = sharedPreferences.getString("USER", null)
+        user = userJson?.let { Gson().fromJson(it, User::class.java) }
+        Log.d("UserCheck", "Loaded User: ${Gson().toJson(user)}")
+    }
+
+    private fun addToLikeTable(travelItem : TravelItem) {
+        val apiService = RetrofitClient.instance
+        val details = mapOf<String,Int?>(
+            "user_id" to user?.id,
+            "post_id" to travelItem.postId
+        )
+        apiService.addToLikeTable(details).enqueue(object : Callback<Like> {
+            override fun onResponse(call: Call<Like>, response: Response<Like>) {
+                if (response.isSuccessful) {
+                    val like = response.body()
+                } else {
+                    println("Failed to fetch saved count")
+                }
+            }
+
+            override fun onFailure(call: Call<Like>, t: Throwable) {
+                println("Error: ${t.message}")
+            }
+        })
+    }
+
+    private fun removeFromLikeTable(travelItem : TravelItem) {
+        val apiService = RetrofitClient.instance
+
+        apiService.removeFromLikeTable(user?.id,travelItem.postId).enqueue(object : Callback<String> {
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                if (response.isSuccessful) {
+                    val message = response.body()
+                } else {
+                    println("Failed to fetch saved count")
+                }
+            }
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                println("Error: ${t.message}")
+            }
+        })
+    }
+
+    private fun addToSavedTable(travelItem : TravelItem) {
+        val apiService = RetrofitClient.instance
+        val details = mapOf<String,Int?>(
+            "user_id" to user?.id,
+            "post_id" to travelItem.postId
+        )
+        apiService.addToSavedTable(details).enqueue(object : Callback<Save> {
+            override fun onResponse(call: Call<Save>, response: Response<Save>) {
+                if (response.isSuccessful) {
+                    val save = response.body()
+                } else {
+                    println("Failed to fetch saved count")
+                }
+            }
+
+            override fun onFailure(call: Call<Save>, t: Throwable) {
+                println("Error: ${t.message}")
+            }
+        })
+    }
+
+    private fun removeFromSavedTable(travelItem : TravelItem) {
+        val apiService = RetrofitClient.instance
+
+        apiService.removeFromSavedTable(user?.id,travelItem.postId).enqueue(object : Callback<String> {
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                if (response.isSuccessful) {
+                    val message = response.body()
+                } else {
+                    println("Failed to fetch saved count")
+                }
+            }
+
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                println("Error: ${t.message}")
+            }
+        })
+    }
 }

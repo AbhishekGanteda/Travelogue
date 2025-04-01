@@ -1,15 +1,17 @@
 package com.journal.travelogue
 
 data class TravelItem(
-    val userName: String,
-    val profileImageRes: Int,
-    val travelDescription: String,
-    val placeImageRes: Int,
-    val placeName: String,
-    var isLiked: Boolean = false,
-    var likeCount : Int =0,
-    var isSaved: Boolean = false,
-    var savedCount : Int = 0,
-    val latitude: Double,
-    val longitude: Double
+    val userId: Int?,
+    val postId: Int?,
+    val userName: String?,
+    val profileImageRes: String?,
+    val travelDescription: String?,
+    val placeImageRes: String?,
+    val placeName: String?,
+    var isLiked: Boolean?,
+    var likeCount : Int?,
+    var isSaved: Boolean?,
+    var savedCount : Int?,
+    val latitude: Double?,
+    val longitude: Double?
 )
