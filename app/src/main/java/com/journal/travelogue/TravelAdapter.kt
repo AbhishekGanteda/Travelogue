@@ -16,6 +16,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.journal.travelogue.api.RetrofitClient
+import com.journal.travelogue.models.Follow
 import com.journal.travelogue.models.Like
 import com.journal.travelogue.models.Save
 import com.journal.travelogue.models.User
@@ -29,6 +30,7 @@ class TravelAdapter(private val travelList: MutableList<TravelItem>,
     RecyclerView.Adapter<TravelAdapter.TravelViewHolder>() {
     private var user: User? = null
     private lateinit var sharedPreferences: android.content.SharedPreferences
+    val ip = RetrofitClient.ip
 
     class TravelViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val cardView: CardView = view.findViewById(R.id.card_view)
@@ -44,11 +46,10 @@ class TravelAdapter(private val travelList: MutableList<TravelItem>,
         val locationIcon: ImageView = view.findViewById(R.id.location)
         val likeContainer: LinearLayout = view.findViewById(R.id.likeContainer)
         val savedContainer: LinearLayout = view.findViewById(R.id.savedContainer)
-        val editContainer: LinearLayout = view.findViewById(R.id.editContainer)
-        val deleteContainer: LinearLayout = view.findViewById(R.id.deleteContainer)
         val locationContainer: LinearLayout = view.findViewById(R.id.locationContainer)
         var likeText : TextView = view.findViewById(R.id.like_count)
         var saveText : TextView = view.findViewById(R.id.save_count)
+        var followButton : ImageView = view.findViewById(R.id.followButton)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TravelViewHolder {
@@ -63,19 +64,23 @@ class TravelAdapter(private val travelList: MutableList<TravelItem>,
         val travelItem = travelList[position]
 
         holder.userName.text = travelItem.userName
-        holder.travelDescription.text = travelItem.travelDescription
+        holder.travelDescription.text = travelItem.travelDescription?.let {
+            if (it.length > 80) it.substring(0, 80) + "..." else it
+        } ?: ""
+
+
         holder.placeName.text = travelItem.placeName
         holder.likeText.text = travelItem.likeCount.toString()
         holder.saveText.text = travelItem.savedCount.toString()
 
         Picasso.get()
-            .load("http://10.56.20.138:5000" + travelItem.profileImageRes) // Use URL instead of resource ID
+            .load("http://$ip:5000" + travelItem.profileImageRes) // Use URL instead of resource ID
             .placeholder(R.drawable.profile)
             .error(R.drawable.profile)
             .into(holder.profileImage)
 
         Picasso.get()
-            .load("http://10.56.20.138:5000/uploads/" + travelItem.placeImageRes) // Use URL instead of resource ID
+            .load("http://$ip:5000/uploads/" + travelItem.placeImageRes) // Use URL instead of resource ID
             .placeholder(R.drawable.noimage)
             .error(R.drawable.noimage)
             .into(holder.placeImage)
@@ -83,6 +88,7 @@ class TravelAdapter(private val travelList: MutableList<TravelItem>,
         // Toggle Like & Save icons dynamically
         holder.likeIcon.setImageResource(if (travelItem.isLiked ?: false) R.drawable.liked else R.drawable.like)
         holder.saveIcon.setImageResource(if (travelItem.isSaved ?: false) R.drawable.saved else R.drawable.save)
+        holder.followButton.setImageResource(if (travelItem.isFollowed ?: false) R.drawable.followed else R.drawable.follow)
 
         // Handle Like action
         holder.likeIcon.setOnClickListener {
@@ -101,7 +107,7 @@ class TravelAdapter(private val travelList: MutableList<TravelItem>,
             holder.likeIcon.setImageResource(if (travelItem.isLiked == true) R.drawable.liked else R.drawable.like)
             holder.likeText.text = travelItem.likeCount.toString() // Update TextView
 
-            notifyItemChanged(position) // Refresh only the changed item
+            notifyDataSetChanged() // Refresh only the changed item
         }
 
         // Handle Save action
@@ -121,10 +127,24 @@ class TravelAdapter(private val travelList: MutableList<TravelItem>,
             holder.saveIcon.setImageResource(if (travelItem.isSaved == true) R.drawable.saved else R.drawable.save)
             holder.saveText.text = travelItem.savedCount.toString() // Update TextView
 
-            notifyItemChanged(position) // Refresh only the changed item
+            notifyDataSetChanged() // Refresh only the changed item
         }
 
+        holder.followButton.setOnClickListener {
+            travelItem.isFollowed = !(travelItem.isFollowed ?: false)
 
+            // Update Save Count Immediately
+            if (travelItem.isFollowed == true) {
+                addToFollowerTable(travelItem)
+            } else {
+                removeFromFollowerTable(travelItem)
+            }
+
+            // Update UI
+            holder.followButton.setImageResource(if (travelItem.isFollowed == true) R.drawable.followed else R.drawable.follow)
+
+            notifyDataSetChanged() // Refresh only the changed item
+        }
 
         // Handle Edit action
         holder.editIcon.setOnClickListener {
@@ -133,6 +153,7 @@ class TravelAdapter(private val travelList: MutableList<TravelItem>,
 
         // Handle Delete action
         holder.deleteIcon.setOnClickListener {
+            deleteFromPostsTable(travelItem)
             travelList.removeAt(position)
             notifyItemRemoved(position)
             notifyItemRangeChanged(position, travelList.size)
@@ -149,21 +170,33 @@ class TravelAdapter(private val travelList: MutableList<TravelItem>,
 
         // Set visibility based on pageType
         if (pageType == "home" || pageType == "saved") {
+            holder.followButton.visibility = View.VISIBLE
             holder.locationContainer.visibility = View.VISIBLE
             holder.likeContainer.visibility = View.VISIBLE
             holder.savedContainer.visibility = View.VISIBLE
 
-            holder.editContainer.visibility = View.GONE
-            holder.deleteContainer.visibility = View.GONE
+            holder.editIcon.visibility = View.GONE
+            holder.deleteIcon.visibility = View.GONE
+
         } else if (pageType == "profile") {
             holder.locationContainer.visibility = View.VISIBLE
-            holder.editContainer.visibility = View.VISIBLE
-            holder.deleteContainer.visibility = View.VISIBLE
-
+            holder.editIcon.visibility = View.VISIBLE
+            holder.deleteIcon.visibility = View.VISIBLE
             holder.likeContainer.visibility = View.VISIBLE
             holder.savedContainer.visibility = View.VISIBLE
+
+            holder.followButton.visibility = View.GONE
         }
 
+        holder.cardView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, FullPost::class.java)
+            intent.putExtra("userName", travelItem.userName)
+            intent.putExtra("profileImage", travelItem.profileImageRes)
+            intent.putExtra("placeImage", travelItem.placeImageRes)
+            intent.putExtra("placeName", travelItem.placeName)
+            intent.putExtra("description", travelItem.travelDescription)
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int = travelList.size
@@ -237,6 +270,63 @@ class TravelAdapter(private val travelList: MutableList<TravelItem>,
         val apiService = RetrofitClient.instance
 
         apiService.removeFromSavedTable(user?.id,travelItem.postId).enqueue(object : Callback<String> {
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                if (response.isSuccessful) {
+                    val message = response.body()
+                } else {
+                    println("Failed to fetch saved count")
+                }
+            }
+
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                println("Error: ${t.message}")
+            }
+        })
+    }
+
+    private fun addToFollowerTable(travelItem: TravelItem) {
+        val apiService = RetrofitClient.instance
+        val details = mapOf<String,Int?>(
+            "follower_id" to user?.id,
+            "following_id" to travelItem.userId
+        )
+        apiService.addToFollowerTable(details).enqueue(object : Callback<Follow> {
+            override fun onResponse(call: Call<Follow>, response: Response<Follow>) {
+                if (response.isSuccessful) {
+                    val follow = response.body()
+                } else {
+                    println("Failed to fetch saved count")
+                }
+            }
+
+            override fun onFailure(call: Call<Follow>, t: Throwable) {
+                println("Error: ${t.message}")
+            }
+        })
+    }
+
+    private fun removeFromFollowerTable(travelItem: TravelItem) {
+        val apiService = RetrofitClient.instance
+
+        apiService.removeFromFollowerTable(user?.id,travelItem.userId).enqueue(object : Callback<String> {
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                if (response.isSuccessful) {
+                    val message = response.body()
+                } else {
+                    println("Failed to fetch saved count")
+                }
+            }
+
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                println("Error: ${t.message}")
+            }
+        })
+    }
+
+    private fun deleteFromPostsTable(travelItem: TravelItem) {
+        val apiService = RetrofitClient.instance
+
+        apiService.deleteFromPostsTable(travelItem.postId).enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.isSuccessful) {
                     val message = response.body()

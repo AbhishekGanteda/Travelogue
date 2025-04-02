@@ -16,7 +16,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
 import com.journal.travelogue.api.RetrofitClient
+import com.journal.travelogue.models.Follow
 import com.journal.travelogue.models.Post
+import com.journal.travelogue.models.Save
 import com.journal.travelogue.models.User
 import retrofit2.Call
 import retrofit2.Callback
@@ -116,8 +118,9 @@ class HomeFragment : Fragment() {
                             postSavedOrNot(post.id, user?.id) { isSaved ->
                                 getSavedCount(post.id) { savedCount ->
                                     getLikesCount(post.id) { likesCount ->
-                                        print("******isLiked "+isLiked+" isSaved "+isSaved+" savedCount "+savedCount+" likesCount "+likesCount)
-                                        updateTravelList(post, it, isLiked, isSaved, savedCount, likesCount)
+                                        checkFollow(it) { isFollow ->
+                                            updateTravelList(post, it, isLiked, isSaved, savedCount, likesCount, isFollow)
+                                        }
                                     }
                                 }
                             }
@@ -134,7 +137,7 @@ class HomeFragment : Fragment() {
         })
     }
 
-    private fun updateTravelList(post: Post, user: User, isLiked: Boolean, isSaved: Boolean, savedCount: Int, likesCount: Int) {
+    private fun updateTravelList(post: Post, user: User, isLiked: Boolean, isSaved: Boolean, savedCount: Int, likesCount: Int, isFollow : Boolean) {
             val newTravelItem = TravelItem(
                 userId = user.id,
                 postId = post.id,
@@ -143,6 +146,7 @@ class HomeFragment : Fragment() {
                 travelDescription = post.description,
                 placeImageRes = post.image,
                 placeName = post.place_name,
+                isFollowed = isFollow,
                 isLiked = isLiked,
                 likeCount = likesCount,
                 isSaved = isSaved,
@@ -241,6 +245,28 @@ class HomeFragment : Fragment() {
             override fun onFailure(call: Call<Int>, t: Throwable) {
                 println("Error: ${t.message}")
                 callback(0) // Return 0 if there's an error
+            }
+        })
+    }
+
+    private fun checkFollow(postUser: User, callback: (Boolean) -> Unit) {
+        val apiService = RetrofitClient.instance
+
+        apiService.checkFollow(user?.id,postUser.id).enqueue(object : Callback<Map<String, Boolean>> {
+            override fun onResponse(call: Call<Map<String, Boolean>>, response: Response<Map<String, Boolean>>) {
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    val isFollow = responseBody?.get("isFollow") ?: false
+                    callback(isFollow)
+                } else {
+                    println("Failed to fetch saved count")
+                    callback(false)
+                }
+            }
+
+            override fun onFailure(call: Call<Map<String, Boolean>>, t: Throwable) {
+                println("Error: ${t.message}")
+                callback(false)
             }
         })
     }

@@ -1,5 +1,6 @@
 package com.journal.travelogue.api
 
+import com.journal.travelogue.models.Follow
 import com.journal.travelogue.models.Like
 import com.journal.travelogue.models.LoginResponse
 import com.journal.travelogue.models.Post
@@ -89,5 +90,52 @@ interface ApiService {
     fun removeFromSavedTable(
         @Path("userId") userId: Int?,
         @Path("postId") postId: Int?
+    ): Call<String>
+
+    @GET("api/followers/check/{followerId}/{followingId}")
+    fun checkFollow(
+        @Path("followerId") followerId : Int?,
+        @Path("followingId") followingId : Int?
+    ) : Call<Map<String, Boolean>>
+
+    @POST("api/followers")
+    fun addToFollowerTable(
+        @Body details:Map<String,Int?>
+    ) : Call<Follow>
+
+    @DELETE("api/followers/{follower_id}/{following_id}")
+    fun removeFromFollowerTable(
+        @Path("follower_id") follower_id: Int?,
+        @Path("following_id") following_id: Int?
+    ): Call<String>
+
+    @GET("api/followers/followersCount/{userId}")
+    fun getFollowersCount(
+        @Path("userId") userId : Int?
+    ) : Call<Int>
+
+    @GET("api/followers/followingCount/{userId}")
+    fun getFollowingCount(
+        @Path("userId") userId : Int?
+    ) : Call<Int>
+
+    @GET("api/posts/{userId}")
+    fun getUserPosts(
+        @Path("userId") userId: Int?
+    ) : Call<List<Post>>
+
+    @GET("api/posts/saved/{userId}")
+    fun getSavedPosts(
+        @Path("userId") userId: Int?
+    ) : Call<List<Post>>
+
+    @GET("api/posts/count/{userId}")
+    fun getUserPostsCount(
+        @Path("userId") userId: Int?,
+    ): Call<Int>
+
+    @DELETE("api/posts/{id}")
+    fun deleteFromPostsTable(
+        @Path("id") id : Int?
     ): Call<String>
 }

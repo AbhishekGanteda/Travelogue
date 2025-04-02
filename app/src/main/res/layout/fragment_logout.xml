@@ -98,7 +98,7 @@
                     android:textStyle="bold"
                     />
                 <TextView
-                    android:id="@+id/followers"
+                    android:id="@+id/followersCount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
@@ -129,7 +129,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
                 <TextView
-                    android:id="@+id/following"
+                    android:id="@+id/followingCount"
                     android:textColor="@color/black"
                     android:gravity="center"
                     android:text="103"

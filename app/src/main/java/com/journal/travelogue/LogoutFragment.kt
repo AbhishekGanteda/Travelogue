@@ -37,9 +37,13 @@ class LogoutFragment : Fragment() {
     private lateinit var logoutButton: Button
     private lateinit var dialog: AlertDialog
     private lateinit var dialogView: View
+    private lateinit var followersCount : TextView
+    private lateinit var followingCount : TextView
+    private lateinit var postsCount : TextView
     private var selectedImageFile: File? = null
     private var user: User? = null
     private lateinit var sharedPreferences: android.content.SharedPreferences
+    val ip = RetrofitClient.ip
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,6 +55,9 @@ class LogoutFragment : Fragment() {
         profileImage = view.findViewById(R.id.userImage)
         editButton = view.findViewById(R.id.edit)
         logoutButton = view.findViewById(R.id.logout)
+        followersCount = view.findViewById(R.id.followersCount)
+        followingCount = view.findViewById(R.id.followingCount)
+        postsCount = view.findViewById(R.id.posts)
 
         sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Activity.MODE_PRIVATE)
 
@@ -73,9 +80,20 @@ class LogoutFragment : Fragment() {
         user?.let {
             nameText.text = it.name
             Picasso.get()
-                .load("http://10.56.20.138:5000" + it.profile_image)
+                .load("http://$ip:5000" + it.profile_image)
                 .placeholder(R.drawable.profile)
                 .into(profileImage);
+            getFollowersCount(it) { count ->
+                followersCount.text = count.toString()
+            }
+
+            getFollowingCount(it) { count ->
+                followingCount.text = count.toString()
+            }
+
+            getUserPostsCount(it) { count ->
+                postsCount.text = count.toString()
+            }
         }
     }
 
@@ -192,5 +210,68 @@ class LogoutFragment : Fragment() {
         context?.let {
             Toast.makeText(it, message, Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun getFollowersCount(user: User, callback: (Int) -> Unit){
+        val apiService = RetrofitClient.instance
+
+        apiService.getFollowersCount(user.id).enqueue(object : Callback<Int> {
+            override fun onResponse(call: Call<Int>, response: Response<Int>) {
+                if (response.isSuccessful) {
+                    val count : Int = response.body() ?: 0
+                    callback(count)
+                } else {
+                    println("Failed to fetch followers count")
+                    callback(0)
+                }
+            }
+
+            override fun onFailure(call: Call<Int>, t: Throwable) {
+                println("Error: ${t.message}")
+                callback(0)
+            }
+        })
+    }
+
+    private fun getFollowingCount(user: User, callback: (Int) -> Unit){
+        val apiService = RetrofitClient.instance
+
+        apiService.getFollowingCount(user.id).enqueue(object : Callback<Int> {
+            override fun onResponse(call: Call<Int>, response: Response<Int>) {
+                if (response.isSuccessful) {
+                    val count : Int = response.body() ?: 0
+                    callback(count)
+                } else {
+                    println("Failed to fetch following count")
+                    callback(0)
+                }
+            }
+
+            override fun onFailure(call: Call<Int>, t: Throwable) {
+                println("Error: ${t.message}")
+                callback(0)
+            }
+        })
+    }
+
+    private fun getUserPostsCount(user: User, callback: (Int) -> Unit){
+        val apiService = RetrofitClient.instance
+
+        apiService.getUserPostsCount(user.id).enqueue(object : Callback<Int> {
+            override fun onResponse(call: Call<Int>, response: Response<Int>) {
+                if (response.isSuccessful) {
+                    val count : Int = response.body() ?: 0
+                    callback(count)
+                } else {
+                    println("Failed to fetch posts count")
+                    callback(0)
+                }
+            }
+
+            override fun onFailure(call: Call<Int>, t: Throwable) {
+                println("Error: ${t.message}")
+                callback(0)
+            }
+        })
     }
 }

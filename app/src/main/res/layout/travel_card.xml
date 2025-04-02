@@ -27,9 +27,8 @@
 
             <ImageView
                 android:id="@+id/profile"
-                android:layout_width="0dp"
+                android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_weight="1"
                 android:layout_gravity="center"
                 android:scaleType="centerCrop"
                 android:src="@drawable/profile"
@@ -51,20 +50,38 @@
                 android:gravity="start"
                 android:padding="5dp" />
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_weight="3"
-                />
-
             <ImageView
-                android:layout_width="0dp"
+                android:id="@+id/followButton"
+                android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_weight="1"
                 android:padding="3dp"
                 android:layout_gravity="center"
                 android:src="@drawable/follow"
                 android:scaleType="centerCrop"
+                android:visibility="gone"
+                />
+
+            <ImageView
+                android:id="@+id/edit"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="3dp"
+                android:layout_gravity="center"
+                android:src="@drawable/edit"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                />
+
+            <ImageView
+                android:id="@+id/delete"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:padding="3dp"
+                android:layout_gravity="center"
+                android:src="@drawable/delete"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
                 />
         </LinearLayout>
 
@@ -103,7 +120,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:paddingBottom="3dp"
             android:orientation="horizontal"
             android:gravity="center"
@@ -113,10 +130,9 @@
                 android:id="@+id/likeContainer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="1.1"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:visibility="gone"
+                android:orientation="horizontal"
                 >
 
                 <ImageView
@@ -131,9 +147,11 @@
                 <TextView
                     android:id="@+id/like_count"
                     android:layout_width="wrap_content"
-                    android:layout_height="15dp"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="2dp"
                     android:text="0"
-                    android:textSize="14sp"
+                    android:textSize="17sp"
                     android:textColor="@color/black"
                     />
             </LinearLayout>
@@ -144,8 +162,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:visibility="gone"
+                android:orientation="horizontal"
                 >
 
                 <ImageView
@@ -160,64 +177,20 @@
                 <TextView
                     android:id="@+id/save_count"
                     android:layout_width="wrap_content"
-                    android:layout_height="15dp"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="2dp"
                     android:text="0"
-                    android:textSize="14sp"
+                    android:textSize="17sp"
                     android:textColor="@color/black"
                     />
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/editContainer"
+            <View
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:visibility="gone"
-                >
-
-                <ImageView
-                    android:id="@+id/edit"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/edit"
-                    android:contentDescription="Edit"
-                    android:padding="3dp"
-                    />
-
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="15dp"
-                    />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/deleteContainer"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:visibility="gone"
-                >
-
-                <ImageView
-                    android:id="@+id/delete"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/delete"
-                    android:contentDescription="Delete"
-                    android:padding="3dp"
-                    />
-
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="15dp"
-                    />
-            </LinearLayout>
+                android:layout_height="55dp"
+                android:layout_weight="2.2"
+                />
 
             <LinearLayout
                 android:id="@+id/locationContainer"
@@ -226,22 +199,15 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:visibility="gone"
                 >
 
                 <ImageView
                     android:id="@+id/location"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_weight="1"
                     android:src="@drawable/location"
                     android:contentDescription="Location"
                     android:padding="3dp"
-                    />
-
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="15dp"
                     />
             </LinearLayout>
 

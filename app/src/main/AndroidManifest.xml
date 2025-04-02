@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".MyApplication"
@@ -18,9 +18,11 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".NewPost"
+            android:name=".FullPost"
             android:exported="false" />
-        <!-- Set SplashActivity as Launcher -->
+        <activity
+            android:name=".NewPost"
+            android:exported="false" /> <!-- Set SplashActivity as Launcher -->
         <activity
             android:name=".SplashActivity"
             android:exported="true">

@@ -13,17 +13,17 @@
     tools:context=".ProfileFragment">
 
 
-        <TextView
-            android:id="@+id/titleText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:fontFamily="@font/hostgroteskvariablefont_wght"
-            android:text="YOUR TRIPS"
-            android:textColor="@color/random2"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:fontFamily="@font/hostgroteskvariablefont_wght"
+        android:text="YOUR TRIPS"
+        android:textColor="@color/random2"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <RelativeLayout
         android:layout_gravity="center"
@@ -43,8 +43,9 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="60dp"
             android:padding="8dp"
-            android:layout_marginTop="100dp"/>
+            />
 
     </RelativeLayout>
 

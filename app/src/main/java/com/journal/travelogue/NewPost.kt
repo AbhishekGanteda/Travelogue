@@ -75,8 +75,20 @@ class NewPost : AppCompatActivity() {
 
         // Set click listener for Save button
         btnSave.setOnClickListener {
-            postTravelItem(placeName.text.toString().trim(), description.text.toString().trim(), latitude.text.toString().trim().toDouble(), latitude.text.toString().trim().toDouble())
+            val descriptionText = description.text.toString().trim()
+
+            if (descriptionText.length < 500) {
+                showToast("Description must be at least 500 characters!")
+            } else {
+                postTravelItem(
+                    placeName.text.toString().trim(),
+                    descriptionText,
+                    latitude.text.toString().trim().toDouble(),
+                    longitude.text.toString().trim().toDouble()
+                )
+            }
         }
+
 
         // Set click listener for Back button
         backButton.setOnClickListener {
