@@ -35,20 +35,18 @@
 
     </LinearLayout>
 
-
     <ImageView
         android:id="@+id/userImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_gravity="left"
-        android:layout_marginLeft="15dp"
-        android:layout_centerHorizontal="true"
+        android:layout_gravity="start"
+        android:layout_marginStart="15dp"
         android:layout_marginBottom="-60dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/profile"
         android:background="@drawable/profile_border"
         android:elevation="10dp"
         android:padding="4dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/profile"
         />
 
     <LinearLayout

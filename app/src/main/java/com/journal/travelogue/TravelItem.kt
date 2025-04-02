@@ -8,6 +8,7 @@ data class TravelItem(
     val travelDescription: String?,
     val placeImageRes: String?,
     val placeName: String?,
+    //var isFollowed : Boolean?,
     var isLiked: Boolean?,
     var likeCount : Int?,
     var isSaved: Boolean?,

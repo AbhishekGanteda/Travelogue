@@ -14,10 +14,10 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
-import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import com.journal.travelogue.api.RetrofitClient
 import com.journal.travelogue.models.User
+import com.squareup.picasso.Picasso
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -72,10 +72,10 @@ class LogoutFragment : Fragment() {
     private fun updateUI() {
         user?.let {
             nameText.text = it.name
-            Glide.with(requireContext())
-                .load("http://10.123.24.241:5000" + it.profile_image)
+            Picasso.get()
+                .load("http://10.56.20.138:5000" + it.profile_image)
                 .placeholder(R.drawable.profile)
-                .into(profileImage)
+                .into(profileImage);
         }
     }
 

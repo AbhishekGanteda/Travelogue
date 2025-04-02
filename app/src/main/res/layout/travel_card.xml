@@ -27,19 +27,22 @@
 
             <ImageView
                 android:id="@+id/profile"
-                android:layout_width="40dp"
+                android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_centerHorizontal="true"
+                android:layout_weight="1"
                 android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:src="@drawable/profile"
                 android:background="@drawable/profile_border"
                 android:padding="4dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/profile" />
+                />
 
             <TextView
                 android:id="@+id/user_name"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:layout_gravity="center"
                 android:fontFamily="@font/hostgroteskvariablefont_wght"
                 android:text="V. Abhishek"
                 android:textSize="18sp"
@@ -47,6 +50,22 @@
                 android:textColor="@color/black"
                 android:gravity="start"
                 android:padding="5dp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="3"
+                />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:padding="3dp"
+                android:layout_gravity="center"
+                android:src="@drawable/follow"
+                android:scaleType="centerCrop"
+                />
         </LinearLayout>
 
         <TextView
@@ -64,8 +83,8 @@
 
         <ImageView
             android:id="@+id/image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
             android:scaleType="centerCrop"
             android:adjustViewBounds="true"
             android:src="@drawable/paris" />
@@ -102,11 +121,11 @@
 
                 <ImageView
                     android:id="@+id/like"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/like"
                     android:contentDescription="Like"
-                    android:padding="5dp"
+                    android:padding="3dp"
                     />
 
                 <TextView
@@ -131,11 +150,11 @@
 
                 <ImageView
                     android:id="@+id/save"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/save"
                     android:contentDescription="Save"
-                    android:padding="5dp"
+                    android:padding="3dp"
                     />
 
                 <TextView
@@ -160,12 +179,12 @@
 
                 <ImageView
                     android:id="@+id/edit"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
                     android:src="@drawable/edit"
                     android:contentDescription="Edit"
-                    android:padding="5dp"
+                    android:padding="3dp"
                     />
 
                 <View
@@ -186,12 +205,12 @@
 
                 <ImageView
                     android:id="@+id/delete"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
                     android:src="@drawable/delete"
                     android:contentDescription="Delete"
-                    android:padding="5dp"
+                    android:padding="3dp"
                     />
 
                 <View
@@ -212,12 +231,12 @@
 
                 <ImageView
                     android:id="@+id/location"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
                     android:src="@drawable/location"
                     android:contentDescription="Location"
-                    android:padding="5dp"
+                    android:padding="3dp"
                     />
 
                 <View

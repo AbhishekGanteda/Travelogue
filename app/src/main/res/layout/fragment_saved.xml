@@ -19,7 +19,7 @@
         android:fontFamily="@font/hostgroteskvariablefont_wght"
         android:gravity="center"
         android:layout_gravity="center"
-        android:text="TRAVELOGUE"
+        android:text="SAVED"
         android:textColor="@color/random2"
         android:textSize="24sp"
         android:textStyle="bold" />
@@ -44,7 +44,7 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="40dp"
             android:padding="8dp" />
 
 

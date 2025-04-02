@@ -20,7 +20,7 @@
             android:gravity="center"
             android:layout_gravity="center"
             android:fontFamily="@font/hostgroteskvariablefont_wght"
-            android:text="PROFILE"
+            android:text="YOUR TRIPS"
             android:textColor="@color/random2"
             android:textSize="24sp"
             android:textStyle="bold" />

@@ -13,14 +13,13 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import com.journal.travelogue.api.RetrofitClient
 import com.journal.travelogue.models.Like
 import com.journal.travelogue.models.Save
 import com.journal.travelogue.models.User
+import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -69,14 +68,14 @@ class TravelAdapter(private val travelList: MutableList<TravelItem>,
         holder.likeText.text = travelItem.likeCount.toString()
         holder.saveText.text = travelItem.savedCount.toString()
 
-        Glide.with(holder.itemView.context)
-            .load("http://10.123.24.241:5000" + travelItem.profileImageRes) // Use URL instead of resource ID
+        Picasso.get()
+            .load("http://10.56.20.138:5000" + travelItem.profileImageRes) // Use URL instead of resource ID
             .placeholder(R.drawable.profile)
             .error(R.drawable.profile)
             .into(holder.profileImage)
 
-        Glide.with(holder.itemView.context)
-            .load("http://10.123.24.241:5000/uploads/" + travelItem.placeImageRes) // Use URL instead of resource ID
+        Picasso.get()
+            .load("http://10.56.20.138:5000/uploads/" + travelItem.placeImageRes) // Use URL instead of resource ID
             .placeholder(R.drawable.noimage)
             .error(R.drawable.noimage)
             .into(holder.placeImage)
