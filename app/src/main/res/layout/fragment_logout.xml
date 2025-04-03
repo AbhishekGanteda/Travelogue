@@ -28,14 +28,14 @@
             android:layout_height="match_parent"
             android:text="PROFILE"
             android:textColor="@color/white"
-            android:fontFamily="@font/hostgrotesk_variablefont_wght"
+            android:fontFamily="@font/parkinsans"
             android:textSize="26sp"
             android:textStyle="bold"
             /> <!-- Makes it perfectly center-aligned -->
 
     </LinearLayout>
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/userImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -44,10 +44,11 @@
         android:layout_marginBottom="-60dp"
         android:scaleType="centerCrop"
         android:src="@drawable/profile"
-        android:background="@drawable/profile_border"
         android:elevation="10dp"
-        android:padding="4dp"
-        />
+        android:padding="2dp"
+        app:shapeAppearanceOverlay="@style/CircleImageView"
+        app:strokeColor="@color/white"
+        app:strokeWidth="3dp"/>
 
     <LinearLayout
         android:padding="25dp"
@@ -189,6 +190,8 @@
                 android:text="Edit"
                 android:textSize="18sp"
                 android:textColor="@color/white"
+                android:fontFamily="@font/parkinsans"
+                android:textStyle="bold"
                 android:backgroundTint="@color/orange"
                 />
 
@@ -206,6 +209,8 @@
                 android:text="Logout"
                 android:textSize="18sp"
                 android:textColor="@color/white"
+                android:fontFamily="@font/parkinsans"
+                android:textStyle="bold"
                 android:backgroundTint="@color/orange"
                 />
 

@@ -20,7 +20,7 @@
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:layout_gravity="center"
-        android:fontFamily="@font/hostgroteskvariablefont_wght"
+        android:fontFamily="@font/parkinsans"
         android:text="COMPLETE JOURNAL"
         android:textColor="@color/random2"
         android:textSize="24sp"

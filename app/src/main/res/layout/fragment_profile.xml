@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_gravity="center"
-        android:fontFamily="@font/hostgroteskvariablefont_wght"
+        android:fontFamily="@font/parkinsans"
         android:text="YOUR TRIPS"
         android:textColor="@color/random2"
         android:textSize="24sp"

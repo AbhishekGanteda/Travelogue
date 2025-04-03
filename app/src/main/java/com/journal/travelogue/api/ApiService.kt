@@ -138,4 +138,10 @@ interface ApiService {
     fun deleteFromPostsTable(
         @Path("id") id : Int?
     ): Call<String>
+
+    @PUT("api/posts/{postId}")
+    fun editUserPost(
+        @Path("postId") userId : Int?,
+        @Body details:Map<String,String>
+    ): Call<String>
 }

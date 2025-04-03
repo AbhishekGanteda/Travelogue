@@ -25,16 +25,18 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/profile"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:scaleType="centerCrop"
                 android:src="@drawable/profile"
-                android:background="@drawable/profile_border"
-                android:padding="4dp"
-                />
+                android:elevation="10dp"
+                android:padding="2dp"
+                app:shapeAppearanceOverlay="@style/CircleImageView"
+                app:strokeColor="@color/white"
+                app:strokeWidth="3dp"/>
 
             <TextView
                 android:id="@+id/user_name"

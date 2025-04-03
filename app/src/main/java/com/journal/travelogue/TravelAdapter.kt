@@ -1,18 +1,23 @@
 package com.journal.travelogue
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.text.method.ScrollingMovementMethod
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.journal.travelogue.api.RetrofitClient
@@ -85,6 +90,8 @@ class TravelAdapter(private val travelList: MutableList<TravelItem>,
             .error(R.drawable.noimage)
             .into(holder.placeImage)
 
+        holder.profileImage.background = ContextCompat.getDrawable(holder.itemView.context, R.drawable.profile_border)
+
         // Toggle Like & Save icons dynamically
         holder.likeIcon.setImageResource(if (travelItem.isLiked ?: false) R.drawable.liked else R.drawable.like)
         holder.saveIcon.setImageResource(if (travelItem.isSaved ?: false) R.drawable.saved else R.drawable.save)
@@ -148,16 +155,83 @@ class TravelAdapter(private val travelList: MutableList<TravelItem>,
 
         // Handle Edit action
         holder.editIcon.setOnClickListener {
-            Toast.makeText(it.context, "Edit feature not implemented yet!", Toast.LENGTH_SHORT).show()
+            val context = it.context
+            val dialogView = LayoutInflater.from(context).inflate(R.layout.edit_place_dialog, null)
+
+            val editPlaceName = dialogView.findViewById<EditText>(R.id.editPlaceName)
+            val editDescription = dialogView.findViewById<EditText>(R.id.editDescription)
+            editDescription.movementMethod = ScrollingMovementMethod()
+            val editLatitude = dialogView.findViewById<EditText>(R.id.editLatitude)
+            val editLongitude = dialogView.findViewById<EditText>(R.id.editLongitude)
+            val submitButton = dialogView.findViewById<Button>(R.id.submitEdit)
+
+            // Set existing values in EditText
+            editPlaceName.setText(holder.placeName.text.toString())
+            editDescription.setText(travelItem.travelDescription)
+            editLatitude.setText(travelItem.latitude.toString())
+            editLongitude.setText(travelItem.longitude.toString())
+
+            val dialog = AlertDialog.Builder(context)
+                .setView(dialogView)
+                .setCancelable(true)
+                .create()
+
+            submitButton.setOnClickListener {
+                val updatedPlaceName = editPlaceName.text.toString().trim()
+                val updatedDescription = editDescription.text.toString().trim()
+                val updatedLatitude = editLatitude.text.toString().trim()
+                val updatedLongitude = editLongitude.text.toString().trim()
+
+                if (updatedDescription.length < 500) {
+                    Toast.makeText(context, "Description must be at least 500 characters!", Toast.LENGTH_SHORT).show()
+                } else {
+                    holder.placeName.text = updatedPlaceName
+                    holder.travelDescription.text = updatedDescription
+
+                    travelItem.placeName = updatedPlaceName
+                    travelItem.travelDescription = updatedDescription
+                    travelItem.latitude = updatedLatitude.toDouble()
+                    travelItem.longitude = updatedLongitude.toDouble()
+
+                    editUserPost(travelItem, updatedPlaceName, updatedDescription, updatedLatitude, updatedLongitude)
+
+                    notifyDataSetChanged()
+
+                    if (dialog.isShowing) {
+                        dialog.dismiss()
+                    }
+                }
+            }
+
+            dialog.show()
         }
+
+
 
         // Handle Delete action
         holder.deleteIcon.setOnClickListener {
-            deleteFromPostsTable(travelItem)
-            travelList.removeAt(position)
-            notifyItemRemoved(position)
-            notifyItemRangeChanged(position, travelList.size)
+            val dialogView = LayoutInflater.from(it.context).inflate(R.layout.custom_dialog, null)
+            val dialog = AlertDialog.Builder(it.context)
+                .setView(dialogView)
+                .setCancelable(false)
+                .create()
+            val btnYes = dialogView.findViewById<Button>(R.id.btnYes)
+            val btnCancel = dialogView.findViewById<Button>(R.id.btnCancel)
+
+            btnYes.setOnClickListener {
+                deleteFromPostsTable(travelItem)
+                travelList.removeAt(position)
+                notifyItemRemoved(position)
+                notifyItemRangeChanged(position, travelList.size)
+                dialog.dismiss()
+            }
+            btnCancel.setOnClickListener {
+                dialog.dismiss()
+            }
+
+            dialog.show()
         }
+
 
         // Open Google Maps on Location click
         holder.locationIcon.setOnClickListener {
@@ -327,6 +401,31 @@ class TravelAdapter(private val travelList: MutableList<TravelItem>,
         val apiService = RetrofitClient.instance
 
         apiService.deleteFromPostsTable(travelItem.postId).enqueue(object : Callback<String> {
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                if (response.isSuccessful) {
+                    val message = response.body()
+                } else {
+                    println("Failed to fetch saved count")
+                }
+            }
+
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                println("Error: ${t.message}")
+            }
+        })
+    }
+
+    private fun editUserPost(travelItem: TravelItem, placeName : String, description : String, latitude : String, longitude : String) {
+        val apiService = RetrofitClient.instance
+
+        val details = mapOf<String,String>(
+            "place_name" to placeName,
+            "description" to description,
+            "latitude" to latitude,
+            "longitude" to longitude
+        )
+
+        apiService.editUserPost(travelItem.postId,details).enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.isSuccessful) {
                     val message = response.body()
