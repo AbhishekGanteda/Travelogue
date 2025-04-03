@@ -19,8 +19,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_gravity="center"
-        android:fontFamily="@font/parkinsans"
-        android:text="YOUR TRIPS"
+        android:fontFamily="@font/parkinsansbold"
+        android:text="Your Trips"
         android:textColor="@color/random2"
         android:textSize="24sp"
         android:textStyle="bold" />

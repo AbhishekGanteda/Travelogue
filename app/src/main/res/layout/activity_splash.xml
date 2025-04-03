@@ -22,7 +22,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Travelogue"
-            android:textSize="24sp"
+            android:fontFamily="@font/parkinsansbold"
+            android:textSize="27sp"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:paddingTop="10dp"/>
@@ -35,7 +36,8 @@
         android:text="Digitize Your Travel Stories!"
         android:textSize="16sp"
         android:textColor="@color/black"
-        android:textStyle="italic"
+        android:fontFamily="@font/hostgroteskvariablefont_wght"
+        android:textStyle="bold"
         android:gravity="center"
         android:layout_marginBottom="40dp"
         android:layout_gravity="center_horizontal"/>

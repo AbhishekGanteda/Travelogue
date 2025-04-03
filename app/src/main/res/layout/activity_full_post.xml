@@ -21,7 +21,7 @@
         android:gravity="center"
         android:layout_gravity="center"
         android:fontFamily="@font/parkinsans"
-        android:text="COMPLETE JOURNAL"
+        android:text="Complete Journal"
         android:textColor="@color/random2"
         android:textSize="24sp"
         android:textStyle="bold" />
@@ -68,6 +68,7 @@
 
                 <TextView
                     android:id="@+id/user_name"
+                    android:fontFamily="@font/parkinsans"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -101,25 +102,25 @@
                     <!-- Place Name -->
                     <TextView
                         android:id="@+id/place_name"
+                        android:fontFamily="@font/parkinsansbold"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Paris"
                         android:layout_marginTop="10dp"
                         android:textSize="22sp"
-                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:gravity="center" />
 
                     <!-- Full Description -->
                     <TextView
                         android:id="@+id/travel_description"
+                        android:fontFamily="@font/sedanregular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:text="A beautiful place to visit with stunning architecture and history. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum."
                         android:textSize="16sp"
                         android:textColor="@color/description"
-                        android:textStyle="italic"
                         android:padding="10dp" />
                 </LinearLayout>
             </ScrollView>
