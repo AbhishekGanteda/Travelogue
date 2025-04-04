@@ -5,8 +5,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.bumptech.glide.Glide
 import com.journal.travelogue.api.RetrofitClient.ip
 import com.squareup.picasso.Picasso
 
@@ -42,12 +44,12 @@ class FullPost : AppCompatActivity() {
         descriptionTextView.text = description
 
         // Load images using Glide (if URLs are passed)
-        Picasso.get()
+        Glide.with(this)
             .load("http://$ip:5000"+profileImage)
             .placeholder(R.drawable.profile)
             .error(R.drawable.profile)
             .into(profileImageView)
-        Picasso.get()
+        Glide.with(this)
             .load("http://$ip:5000/uploads/"+placeImage)
             .placeholder(R.drawable.noimage)
             .error(R.drawable.noimage)

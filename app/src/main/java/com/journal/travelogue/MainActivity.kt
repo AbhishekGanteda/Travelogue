@@ -207,7 +207,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun registerUser(user: User) {
-        RetrofitClient.instance.registerUser(user).enqueue(object : Callback<User> {
+        val details = mapOf(
+            "name" to user.name,
+            "email" to user.email,
+            "password" to user.password_hash
+        )
+        RetrofitClient.instance.registerUser(details).enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 if (response.isSuccessful) {
                     Toast.makeText(this@MainActivity, "Registration successful", Toast.LENGTH_SHORT).show()

@@ -51,12 +51,12 @@
         app:strokeWidth="3dp"/>
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:padding="25dp"
         android:layout_gravity="center"
         android:gravity="start"
         android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:background="@color/white"> <!-- Background color matches curve -->
         <!-- Top Curve Background -->
 
@@ -224,120 +224,24 @@
             android:padding="5dp"
 >
 
-            <!-- Fixed TextView -->
-            <TextView
-                android:textColor="@color/black"
-                android:layout_gravity="start"
-                android:gravity="start"
-                android:textSize="20dp"
-                android:text="Friends:"
-                android:fontFamily="@font/hostgroteskvariablefont_wght"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <!-- Horizontal scrollable area -->
-            <HorizontalScrollView
-                android:id="@+id/scroll_view"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scrollbars="none">
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:padding="10dp"
+                />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <!-- ImageViews -->
-                    <ImageView
-                        android:id="@+id/profile_image2"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:layout_margin="7.5dp"
-                        android:background="@drawable/profile_border"
-                        android:elevation="10dp"
-                        android:padding="4dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/profile" />
-
-                    <ImageView
-                        android:id="@+id/profile_image3"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:layout_margin="7.5dp"
-                        android:background="@drawable/profile_border"
-                        android:elevation="10dp"
-                        android:padding="4dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/profile" />
-
-                    <ImageView
-                        android:id="@+id/profile_image23"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:layout_margin="7.5dp"
-                        android:background="@drawable/profile_border"
-                        android:elevation="10dp"
-                        android:padding="4dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/profile" />
-
-                    <ImageView
-                        android:id="@+id/profile_image236"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:layout_margin="7.5dp"
-                        android:background="@drawable/profile_border"
-                        android:elevation="10dp"
-                        android:padding="4dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/profile" />
-
-                    <ImageView
-                        android:id="@+id/profile_image21"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:layout_margin="7.5dp"
-                        android:background="@drawable/profile_border"
-                        android:elevation="10dp"
-                        android:padding="4dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/profile" />
-
-                    <ImageView
-                        android:id="@+id/profile_image28"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:layout_margin="7.5dp"
-                        android:background="@drawable/profile_border"
-                        android:elevation="10dp"
-                        android:padding="4dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/profile" />
-
-                    <ImageView
-                        android:id="@+id/profile_image27"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:layout_margin="7.5dp"
-                        android:background="@drawable/profile_border"
-                        android:elevation="10dp"
-                        android:padding="4dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/profile" />
-
-                </LinearLayout>
-
-            </HorizontalScrollView>
 
         </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/postsGrid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            />
 
     </LinearLayout>
 

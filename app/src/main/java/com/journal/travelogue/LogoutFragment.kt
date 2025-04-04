@@ -14,8 +14,13 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import com.journal.travelogue.api.RetrofitClient
+import com.journal.travelogue.models.Post
 import com.journal.travelogue.models.User
 import com.squareup.picasso.Picasso
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -40,6 +45,12 @@ class LogoutFragment : Fragment() {
     private lateinit var followersCount : TextView
     private lateinit var followingCount : TextView
     private lateinit var postsCount : TextView
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var friendAdapter: FriendsAdapter
+    private lateinit var friendList: MutableList<FriendItem>
+    private lateinit var recyclerView2: RecyclerView
+    private lateinit var postAdapter: ProfilePostAdapter
+    private lateinit var postList: MutableList<ProfilePostItem>
     private var selectedImageFile: File? = null
     private var user: User? = null
     private lateinit var sharedPreferences: android.content.SharedPreferences
@@ -64,8 +75,28 @@ class LogoutFragment : Fragment() {
         loadUserData()
         updateUI()
 
+        recyclerView = view.findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+        user?.id?.let { getAllFriends(it) }
+        friendList = mutableListOf()
+
+        // Initialize Adapter with pageType "home"
+        friendAdapter = FriendsAdapter(friendList)
+        recyclerView.adapter = friendAdapter
+
         editButton.setOnClickListener { showEditProfileDialog() }
         logoutButton.setOnClickListener { logoutUser() }
+
+        recyclerView2 = view.findViewById(R.id.postsGrid)
+        recyclerView2.layoutManager = GridLayoutManager(context, 2)
+        getAllPosts(user?.id)
+        // Create sample data
+        postList = mutableListOf()
+
+        // Initialize Adapter with pageType "home"
+        postAdapter = ProfilePostAdapter(postList)
+        recyclerView2.adapter = postAdapter
 
         return view
     }
@@ -79,7 +110,7 @@ class LogoutFragment : Fragment() {
     private fun updateUI() {
         user?.let {
             nameText.text = it.name
-            Picasso.get()
+            Glide.with(requireContext())
                 .load("http://$ip:5000" + it.profile_image)
                 .placeholder(R.drawable.profile)
                 .into(profileImage);
@@ -273,5 +304,90 @@ class LogoutFragment : Fragment() {
                 callback(0)
             }
         })
+    }
+
+    private fun getAllFriends(userId : Int){
+        val apiService = RetrofitClient.instance
+
+        apiService.getAllFriends(userId).enqueue(object : Callback<List<Int>> {
+            override fun onResponse(call: Call<List<Int>>, response: Response<List<Int>>) {
+                if (response.isSuccessful) {
+                    val friendIds = response.body()
+                    friendIds?.let {
+                        for (friendId in it) {
+                            fetchUserDetails(friendId)
+                        }
+                    }
+                } else {
+                    println("Failed to fetch posts count")
+                }
+            }
+
+            override fun onFailure(call: Call<List<Int>>, t: Throwable) {
+                println("Error: ${t.message}")
+            }
+        })
+    }
+
+    private fun fetchUserDetails(id : Int) {
+        val apiService = RetrofitClient.instance
+        apiService.getUserById(id).enqueue(object : Callback<User> {
+            override fun onResponse(call: Call<User>, response: Response<User>) {
+                if (response.isSuccessful) {
+                    val friend = response.body()
+                    friend?.let {
+                        updateFriendList(it)
+                    }
+                } else {
+                    println("Failed to fetch user for userId: ${id}")
+                }
+            }
+
+            override fun onFailure(call: Call<User>, t: Throwable) {
+                println("Error fetching user: ${t.message}")
+            }
+        })
+    }
+
+    private fun updateFriendList(user: User) {
+        val newFriendItem = FriendItem(
+            userId = user.id,
+            profileImageRes = user.profile_image,
+        )
+
+        friendList.add(newFriendItem)
+        friendAdapter.notifyDataSetChanged()
+    }
+
+    private fun getAllPosts(userId: Int?) {
+        val apiService = RetrofitClient.instance
+        apiService.getAllUserPosts(userId).enqueue(object : Callback<List<Post>> {
+            override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
+                if (response.isSuccessful) {
+                    val posts = response.body()
+                    posts?.let {
+                        for (post in it) {
+                            updatePostList(post)
+                        }
+                    }
+                } else {
+                    println("Failed to fetch posts")
+                }
+            }
+            override fun onFailure(call: Call<List<Post>>, t: Throwable) {
+                println("Error: ${t.message}")
+            }
+        })
+    }
+
+    private fun updatePostList(post: Post) {
+        val newTravelItem = ProfilePostItem(
+            postId = post.id,
+            placeImageRes = post.image,
+            placeName = post.place_name,
+        )
+
+        postList.add(newTravelItem)
+        postAdapter.notifyDataSetChanged()
     }
 }

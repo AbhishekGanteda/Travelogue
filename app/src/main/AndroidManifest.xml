@@ -18,6 +18,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".SelfFullPost"
+            android:exported="false" />
+        <activity
+            android:name=".FullProfile"
+            android:exported="false" />
+        <activity
             android:name=".FullPost"
             android:exported="false" />
         <activity

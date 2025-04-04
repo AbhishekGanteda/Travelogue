@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FullProfile">
+    <LinearLayout
+        android:id="@+id/main"
+        android:paddingTop="60dp"
+        android:fontFamily="@font/hostgroteskvariablefont_wght"
+        android:layout_width="match_parent"
+        android:background="@color/orange"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".LogoutFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text=""
+                android:textColor="@color/white"
+                android:fontFamily="@font/parkinsansbold"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                /> <!-- Makes it perfectly center-aligned -->
+
+        </LinearLayout>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/userImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="start"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="-60dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/profile"
+            android:elevation="10dp"
+            android:padding="2dp"
+            app:shapeAppearanceOverlay="@style/CircleImageView"
+            app:strokeColor="@color/white"
+            app:strokeWidth="3dp"/>
+
+        <LinearLayout
+            android:padding="25dp"
+            android:layout_gravity="center"
+            android:gravity="start"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"> <!-- Background color matches curve -->
+            <!-- Top Curve Background -->
+
+            <TextView
+                android:id="@+id/userName"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                android:text="James bond"
+                android:textSize="25dp"
+                android:fontFamily="@font/hostgroteskvariablefont_wght"
+                android:textStyle="bold"
+                />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                >
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        android:text="Followers"
+                        android:textSize="17.5dp"
+                        android:fontFamily="@font/hostgroteskvariablefont_wght"
+                        android:textStyle="bold"
+                        />
+                    <TextView
+                        android:id="@+id/followersCount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        android:text="256"
+                        android:textSize="15dp"
+                        android:fontFamily="@font/hostgroteskvariablefont_wght"
+                        android:textStyle="bold"
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginLeft="25dp"
+                    android:orientation="vertical"
+                    >
+                    <TextView
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        android:text="Following"
+                        android:textSize="17.5dp"
+                        android:fontFamily="@font/hostgroteskvariablefont_wght"
+                        android:textStyle="bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/followingCount"
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        android:text="103"
+                        android:textSize="15dp"
+                        android:fontFamily="@font/hostgroteskvariablefont_wght"
+                        android:textStyle="bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="25dp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    >
+                    <TextView
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        android:text="Posts"
+                        android:textSize="17.5dp"
+                        android:fontFamily="@font/hostgroteskvariablefont_wght"
+                        android:textStyle="bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/posts"
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        android:text="25"
+                        android:textSize="15dp"
+                        android:fontFamily="@font/hostgroteskvariablefont_wght"
+                        android:textStyle="bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/follow"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center"
+                android:text="Unfollow"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/parkinsans"
+                android:textStyle="bold"
+                android:backgroundTint="@color/orange"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/postsGrid"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:padding="10dp"
+                />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

@@ -19,6 +19,8 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.google.gson.Gson
 import com.journal.travelogue.api.RetrofitClient
 import com.journal.travelogue.models.Follow
@@ -78,13 +80,13 @@ class TravelAdapter(private val travelList: MutableList<TravelItem>,
         holder.likeText.text = travelItem.likeCount.toString()
         holder.saveText.text = travelItem.savedCount.toString()
 
-        Picasso.get()
+        Glide.with(holder.itemView.context)
             .load("http://$ip:5000" + travelItem.profileImageRes) // Use URL instead of resource ID
             .placeholder(R.drawable.profile)
             .error(R.drawable.profile)
             .into(holder.profileImage)
 
-        Picasso.get()
+        Glide.with(holder.itemView.context)
             .load("http://$ip:5000/uploads/" + travelItem.placeImageRes) // Use URL instead of resource ID
             .placeholder(R.drawable.noimage)
             .error(R.drawable.noimage)

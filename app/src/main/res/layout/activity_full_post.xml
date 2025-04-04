@@ -56,15 +56,18 @@
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 >
-
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/profile"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_gravity="center"
                     android:scaleType="centerCrop"
                     android:src="@drawable/profile"
-                    android:background="@drawable/profile_border"
-                    android:padding="4dp" />
+                    android:elevation="10dp"
+                    android:padding="4dp"
+                    app:shapeAppearanceOverlay="@style/CircleImageView"
+                    app:strokeColor="@color/white"
+                    app:strokeWidth="3dp"/>
 
                 <TextView
                     android:id="@+id/user_name"
@@ -120,7 +123,7 @@
                         android:layout_marginTop="10dp"
                         android:text="A beautiful place to visit with stunning architecture and history. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum."
                         android:textSize="16sp"
-                        android:textColor="@color/description"
+                        android:textColor="@color/black"
                         android:padding="10dp" />
                 </LinearLayout>
             </ScrollView>

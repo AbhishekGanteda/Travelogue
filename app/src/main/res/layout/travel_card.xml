@@ -27,8 +27,8 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/profile"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:scaleType="centerCrop"
                 android:src="@drawable/profile"
@@ -54,8 +54,8 @@
 
             <ImageView
                 android:id="@+id/followButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:padding="3dp"
                 android:layout_gravity="center"
                 android:src="@drawable/follow"
@@ -65,8 +65,8 @@
 
             <ImageView
                 android:id="@+id/edit"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:padding="3dp"
                 android:layout_gravity="center"
                 android:src="@drawable/edit"
@@ -76,8 +76,8 @@
 
             <ImageView
                 android:id="@+id/delete"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginLeft="20dp"
                 android:padding="3dp"
                 android:layout_gravity="center"
@@ -91,11 +91,11 @@
             android:id="@+id/travel_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:text="A beautiful place to visit with stunning architecture and history."
             android:textSize="14sp"
-            android:fontFamily="@font/sedanregular"
             android:textColor="@color/description"
-            android:textStyle="bold"
+            android:textStyle="italic"
             android:paddingBottom="5dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp" />
@@ -103,8 +103,8 @@
 
         <ImageView
             android:id="@+id/image"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_width="373dp"
+            android:layout_height="210dp"
             android:scaleType="centerCrop"
             android:adjustViewBounds="true"
             android:src="@drawable/paris" />
@@ -124,8 +124,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:paddingBottom="3dp"
             android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:paddingBottom="3dp"
             android:gravity="center"
             android:weightSum="5">
 
@@ -140,8 +141,8 @@
 
                 <ImageView
                     android:id="@+id/like"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/like"
                     android:contentDescription="Like"
                     android:padding="3dp"
@@ -150,7 +151,7 @@
                 <TextView
                     android:id="@+id/like_count"
                     android:layout_width="wrap_content"
-                    android:layout_height="40dp"
+                    android:layout_height="30dp"
                     android:gravity="center"
                     android:layout_marginLeft="2dp"
                     android:text="0"
@@ -170,8 +171,8 @@
 
                 <ImageView
                     android:id="@+id/save"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/save"
                     android:contentDescription="Save"
                     android:padding="3dp"
@@ -180,7 +181,7 @@
                 <TextView
                     android:id="@+id/save_count"
                     android:layout_width="wrap_content"
-                    android:layout_height="40dp"
+                    android:layout_height="30dp"
                     android:gravity="center"
                     android:layout_marginLeft="2dp"
                     android:text="0"
@@ -206,8 +207,8 @@
 
                 <ImageView
                     android:id="@+id/location"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/location"
                     android:contentDescription="Location"
                     android:padding="3dp"

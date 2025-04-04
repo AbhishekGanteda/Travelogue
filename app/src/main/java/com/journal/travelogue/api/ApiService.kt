@@ -13,7 +13,9 @@ import retrofit2.http.*
 
 interface ApiService {
     @POST("api/users/signup")
-    fun registerUser(@Body user: User): Call<User>
+    fun registerUser(
+        @Body details:Map<String,String?>
+    ): Call<User>
 
     @POST("api/users/login")
     fun loginUser(@Body credentials: User): Call<LoginResponse>
@@ -144,4 +146,19 @@ interface ApiService {
         @Path("postId") userId : Int?,
         @Body details:Map<String,String>
     ): Call<String>
+
+    @GET("api/followers/following/{userId}")
+    fun getAllFriends(
+        @Path("userId") userId : Int?
+    ): Call<List<Int>>
+
+    @GET("api/posts/post/{id}")
+    fun getPostById(
+        @Path("id") id: Int?
+    ) : Call<Post>
+
+    @GET("api/posts/{userId}")
+    fun getAllUserPosts(
+        @Path("userId") userId: Int?
+    ) : Call<List<Post>>
 }
