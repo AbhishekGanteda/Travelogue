@@ -11,13 +11,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
 import com.journal.travelogue.api.RetrofitClient
 import com.journal.travelogue.models.Post
@@ -49,7 +52,7 @@ class LogoutFragment : Fragment() {
     private lateinit var friendAdapter: FriendsAdapter
     private lateinit var friendList: MutableList<FriendItem>
     private lateinit var recyclerView2: RecyclerView
-    private lateinit var postAdapter: ProfilePostAdapter
+    private lateinit var postAdapter: SelfProfilePostAdapter
     private lateinit var postList: MutableList<ProfilePostItem>
     private var selectedImageFile: File? = null
     private var user: User? = null
@@ -90,12 +93,27 @@ class LogoutFragment : Fragment() {
 
         recyclerView2 = view.findViewById(R.id.postsGrid)
         recyclerView2.layoutManager = GridLayoutManager(context, 2)
+
+        val activity = activity as? AppCompatActivity
+        activity?.findViewById<BottomNavigationView>(R.id.bottom_nav_bar)?.let { bottomNav ->
+            bottomNav.viewTreeObserver.addOnGlobalLayoutListener(object :
+                ViewTreeObserver.OnGlobalLayoutListener {
+                override fun onGlobalLayout() {
+                    val navHeight = bottomNav.height
+                    val params = recyclerView2.layoutParams as ViewGroup.MarginLayoutParams
+                    params.bottomMargin = navHeight
+                    recyclerView2.layoutParams = params
+                    bottomNav.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                }
+            })
+        }
+
         getAllPosts(user?.id)
         // Create sample data
         postList = mutableListOf()
 
         // Initialize Adapter with pageType "home"
-        postAdapter = ProfilePostAdapter(postList)
+        postAdapter = SelfProfilePostAdapter(postList)
         recyclerView2.adapter = postAdapter
 
         return view
@@ -129,13 +147,27 @@ class LogoutFragment : Fragment() {
     }
 
     private fun logoutUser() {
-        if (isAdded) {
-            sharedPreferences.edit().clear().apply()
-            startActivity(Intent(requireContext(), MainActivity::class.java))
-            requireActivity().finish()
-        } else {
-            showToast("Fragment not attached")
+        val dialogView = LayoutInflater.from(context).inflate(R.layout.logout_custom_dialog, null)
+        val dialog = AlertDialog.Builder(context)
+            .setView(dialogView)
+            .setCancelable(false)
+            .create()
+        val btnYes = dialogView.findViewById<Button>(R.id.btnYes)
+        val btnCancel = dialogView.findViewById<Button>(R.id.btnCancel)
+
+        btnYes.setOnClickListener {
+            if (isAdded) {
+                sharedPreferences.edit().clear().apply()
+                startActivity(Intent(requireContext(), MainActivity::class.java))
+                requireActivity().finish()
+            } else {
+                showToast("Fragment not attached")
+            }
         }
+        btnCancel.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.show()
     }
 
     private fun showEditProfileDialog() {

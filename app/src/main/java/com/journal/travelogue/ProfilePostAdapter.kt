@@ -55,15 +55,13 @@ class ProfilePostAdapter(private val postList: MutableList<ProfilePostItem>):
         getPostById(postItem.postId) { post ->
             getUserById(post.user_id) { postUser ->
                 holder.postContainer.setOnClickListener {
-                    val intent = Intent(holder.itemView.context, SelfFullPost::class.java)
+                    val intent = Intent(holder.itemView.context, FullPost::class.java)
                     intent.putExtra("postId", post.id)
                     intent.putExtra("userName", postUser.name)
                     intent.putExtra("profileImage", postUser.profile_image)
                     intent.putExtra("placeImage", post.image)
                     intent.putExtra("placeName", post.place_name)
                     intent.putExtra("description", post.description)
-                    intent.putExtra("latitude", post.latitude)
-                    intent.putExtra("longitude", post.longitude)
 
                     holder.itemView.context.startActivity(intent)
                 }

@@ -90,6 +90,16 @@
                     android:src="@drawable/edit"
                     android:scaleType="centerCrop"
                     />
+                <ImageView
+                    android:id="@+id/delete"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:padding="3dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/delete"
+                    android:scaleType="centerCrop"
+                    />
             </LinearLayout>
 
             <!-- Scrollable Content -->

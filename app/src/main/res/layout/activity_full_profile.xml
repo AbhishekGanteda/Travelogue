@@ -65,7 +65,7 @@
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="45dp"
+                android:layout_marginTop="40dp"
                 android:text="James bond"
                 android:textSize="25dp"
                 android:fontFamily="@font/hostgroteskvariablefont_wght"
@@ -76,7 +76,7 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:layout_gravity="center"
                 android:gravity="center"
                 >
@@ -178,7 +178,7 @@
                 android:id="@+id/follow"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:layout_gravity="center"
                 android:text="Unfollow"
                 android:textSize="18sp"
@@ -192,7 +192,6 @@
                 android:id="@+id/postsGrid"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
                 android:padding="10dp"
                 />
 

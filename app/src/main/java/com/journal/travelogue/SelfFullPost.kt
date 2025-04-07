@@ -46,6 +46,7 @@ class SelfFullPost : AppCompatActivity() {
         val placeNameTextView = findViewById<TextView>(R.id.place_name)
         val descriptionTextView = findViewById<TextView>(R.id.travel_description)
         val editIcon = findViewById<ImageView>(R.id.edit)
+        val deleteIcon = findViewById<ImageView>(R.id.delete)
 
         // Set values to UI
         userNameTextView.text = userName
@@ -108,6 +109,26 @@ class SelfFullPost : AppCompatActivity() {
 
             dialog.show()
         }
+
+        deleteIcon.setOnClickListener {
+            val dialogView = LayoutInflater.from(it.context).inflate(R.layout.custom_dialog, null)
+            val dialog = AlertDialog.Builder(it.context)
+                .setView(dialogView)
+                .setCancelable(false)
+                .create()
+            val btnYes = dialogView.findViewById<Button>(R.id.btnYes)
+            val btnCancel = dialogView.findViewById<Button>(R.id.btnCancel)
+
+            btnYes.setOnClickListener {
+                deleteFromPostsTable(postId)
+                dialog.dismiss()
+            }
+            btnCancel.setOnClickListener {
+                dialog.dismiss()
+            }
+
+            dialog.show()
+        }
     }
 
     private fun editUserPost(postId : Int?, placeName : String, description : String, latitude : String, longitude : String) {
@@ -124,6 +145,27 @@ class SelfFullPost : AppCompatActivity() {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.isSuccessful) {
                     val message = response.body()
+                } else {
+                    println("Failed to fetch saved count")
+                }
+            }
+
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                println("Error: ${t.message}")
+            }
+        })
+    }
+
+    private fun deleteFromPostsTable(postId: Int?) {
+        val apiService = RetrofitClient.instance
+
+        apiService.deleteFromPostsTable(postId).enqueue(object : Callback<String> {
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                if (response.isSuccessful) {
+                    val message = response.body()
+                    Toast.makeText(this@SelfFullPost, "Post deleted successfully!", Toast.LENGTH_SHORT).show()
+
+                    finish()
                 } else {
                     println("Failed to fetch saved count")
                 }

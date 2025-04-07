@@ -6,19 +6,18 @@
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/linearlayout_background"
     android:gravity="center"
     >
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/place_image"
-        android:layout_width="110dp"
+        android:layout_width="145dp"
         android:layout_height="110dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="2dp"
+        android:padding="4dp"
         android:scaleType="centerCrop"
         android:src="@drawable/paris"
         android:elevation="10dp"
-        android:padding="2dp"
         app:strokeWidth="3dp"
         app:shapeAppearanceOverlay="@style/CurveImageView"
         />
@@ -26,12 +25,12 @@
     <TextView
         android:id="@+id/place_name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginTop="3dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="2dp"
         android:gravity="center"
         android:text="Paris"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:fontFamily="@font/hostgroteskvariablefont_wght"
         android:textStyle="bold"
         android:textColor="@color/black"

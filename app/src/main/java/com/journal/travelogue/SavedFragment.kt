@@ -49,7 +49,7 @@ class SavedFragment : Fragment() {
 
                     // Set bottom margin dynamically
                     val params = recyclerView.layoutParams as ViewGroup.MarginLayoutParams
-                    params.bottomMargin = navHeight + 100
+                    params.bottomMargin = navHeight
                     recyclerView.layoutParams = params
 
                     bottomNav.viewTreeObserver.removeOnGlobalLayoutListener(this)
