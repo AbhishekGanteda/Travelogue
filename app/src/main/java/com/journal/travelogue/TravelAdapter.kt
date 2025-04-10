@@ -92,6 +92,23 @@ class TravelAdapter(private val travelList: MutableList<TravelItem>,
             .error(R.drawable.noimage)
             .into(holder.placeImage)
 
+        holder.profileImage.setOnClickListener {
+            checkFollow(travelItem.userId) { follow ->
+                fetchFriendDetails(travelItem) { friend ->
+                    getUserPostsCount(friend) { postsCount ->
+                        val intent = Intent(holder.itemView.context, FullProfile::class.java).apply {
+                            putExtra("userId", friend.id)
+                            putExtra("userName", friend.name)
+                            putExtra("profileImage", friend.profile_image)
+                            putExtra("postsCount", postsCount.toString())
+                            putExtra("follow", follow)
+                        }
+                        holder.itemView.context.startActivity(intent)
+                    }
+                }
+            }
+        }
+
         holder.profileImage.background = ContextCompat.getDrawable(holder.itemView.context, R.drawable.profile_border)
 
         // Toggle Like & Save icons dynamically
@@ -438,6 +455,72 @@ class TravelAdapter(private val travelList: MutableList<TravelItem>,
 
             override fun onFailure(call: Call<String>, t: Throwable) {
                 println("Error: ${t.message}")
+            }
+        })
+    }
+
+    private fun fetchFriendDetails(travelItem: TravelItem, callback: (User) -> Unit) {
+        val apiService = RetrofitClient.instance
+        apiService.getUserById(travelItem.userId).enqueue(object : Callback<User> {
+            override fun onResponse(call: Call<User>, response: Response<User>) {
+                if (response.isSuccessful) {
+                    val postUser = response.body()
+                    if (postUser != null) {
+                        callback(postUser)
+                    } else {
+                        println("Failed to fetch user for userId: ${travelItem.userId}")
+                    }
+                } else {
+                    println("Failed to fetch user for userId: ${travelItem.userId}")
+                }
+            }
+
+            override fun onFailure(call: Call<User>, t: Throwable) {
+                println("Error fetching user: ${t.message}")
+            }
+        })
+    }
+
+
+    private fun getUserPostsCount(user: User, callback: (Int) -> Unit){
+        val apiService = RetrofitClient.instance
+
+        apiService.getUserPostsCount(user.id).enqueue(object : Callback<Int> {
+            override fun onResponse(call: Call<Int>, response: Response<Int>) {
+                if (response.isSuccessful) {
+                    val count : Int = response.body() ?: 0
+                    callback(count)
+                } else {
+                    println("Failed to fetch posts count")
+                    callback(0)
+                }
+            }
+
+            override fun onFailure(call: Call<Int>, t: Throwable) {
+                println("Error: ${t.message}")
+                callback(0)
+            }
+        })
+    }
+
+    private fun checkFollow(friendId : Int?, callback: (Boolean) -> Unit) {
+        val apiService = RetrofitClient.instance
+
+        apiService.checkFollow(user?.id,friendId).enqueue(object : Callback<Map<String, Boolean>> {
+            override fun onResponse(call: Call<Map<String, Boolean>>, response: Response<Map<String, Boolean>>) {
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    val isFollow = responseBody?.get("isFollow") ?: false
+                    callback(isFollow)
+                } else {
+                    println("Failed to fetch saved count")
+                    callback(false)
+                }
+            }
+
+            override fun onFailure(call: Call<Map<String, Boolean>>, t: Throwable) {
+                println("Error: ${t.message}")
+                callback(false)
             }
         })
     }

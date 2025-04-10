@@ -56,8 +56,6 @@ class FriendsAdapter(private val friendList: MutableList<FriendItem>):
                             putExtra("userId", friend.id)
                             putExtra("userName", friend.name)
                             putExtra("profileImage", friend.profile_image)
-                            putExtra("followersCount", friend.followers_count.toString())
-                            putExtra("followingCount", friend.following_count.toString())
                             putExtra("postsCount", postsCount.toString())
                             putExtra("follow", follow)
                         }

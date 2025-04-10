@@ -54,8 +54,6 @@ class FullProfile : AppCompatActivity() {
         val userId = intent.getIntExtra("userId", -1)
         val userName = intent.getStringExtra("userName")
         val profileImage = intent.getStringExtra("profileImage")
-        val followersCount = intent.getStringExtra("followersCount")
-        val followingCount = intent.getStringExtra("followingCount")
         val postsCount = intent.getStringExtra("postsCount")
         val follow = intent.getBooleanExtra("follow",true)
 
@@ -69,8 +67,14 @@ class FullProfile : AppCompatActivity() {
         val followButton = findViewById<Button>(R.id.follow)
 
         userNameTV.text = userName
-        followersCountTV.text = followersCount
-        followingCountTV.text = followingCount
+        getFollowersCount(userId) { count ->
+            followersCountTV.text = count.toString()
+        }
+
+        getFollowingCount(userId) { count ->
+            followingCountTV.text = count.toString()
+        }
+
         postsCountTV.text = postsCount
 
         Glide.with(this)
@@ -175,5 +179,47 @@ class FullProfile : AppCompatActivity() {
 
         postList.add(newTravelItem)
         postAdapter.notifyDataSetChanged()
+    }
+
+    private fun getFollowersCount(userId: Int, callback: (Int) -> Unit){
+        val apiService = RetrofitClient.instance
+
+        apiService.getFollowersCount(userId).enqueue(object : Callback<Int> {
+            override fun onResponse(call: Call<Int>, response: Response<Int>) {
+                if (response.isSuccessful) {
+                    val count : Int = response.body() ?: 0
+                    callback(count)
+                } else {
+                    println("Failed to fetch followers count")
+                    callback(0)
+                }
+            }
+
+            override fun onFailure(call: Call<Int>, t: Throwable) {
+                println("Error: ${t.message}")
+                callback(0)
+            }
+        })
+    }
+
+    private fun getFollowingCount(userId: Int, callback: (Int) -> Unit){
+        val apiService = RetrofitClient.instance
+
+        apiService.getFollowingCount(userId).enqueue(object : Callback<Int> {
+            override fun onResponse(call: Call<Int>, response: Response<Int>) {
+                if (response.isSuccessful) {
+                    val count : Int = response.body() ?: 0
+                    callback(count)
+                } else {
+                    println("Failed to fetch following count")
+                    callback(0)
+                }
+            }
+
+            override fun onFailure(call: Call<Int>, t: Throwable) {
+                println("Error: ${t.message}")
+                callback(0)
+            }
+        })
     }
 }
