@@ -33,6 +33,7 @@ import retrofit2.Response
 
 class NewPost : AppCompatActivity() {
 
+
     private lateinit var selectedImageView: ImageView
     private lateinit var uploadButton: Button
     private lateinit var btnSave : Button

@@ -20,6 +20,8 @@ import com.journal.travelogue.models.User
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.widget.ImageView
+
 
 class SavedFragment : Fragment() {
 
@@ -27,6 +29,7 @@ class SavedFragment : Fragment() {
     private lateinit var travelAdapter: TravelAdapter
     private lateinit var travelList: MutableList<TravelItem>
     private var user: User? = null
+    private lateinit var backButton : ImageView
     private lateinit var sharedPreferences: android.content.SharedPreferences
 
     override fun onCreateView(
@@ -34,6 +37,11 @@ class SavedFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_saved, container, false)
+        backButton = view.findViewById(R.id.backButton)
+        backButton.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+
 
         sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Activity.MODE_PRIVATE)
         loadUserData()

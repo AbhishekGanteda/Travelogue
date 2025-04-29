@@ -15,32 +15,48 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:padding="10dp">
+        android:orientation="vertical"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp">
 
-        <!-- Back Button -->
-        <ImageView
-            android:id="@+id/backButton"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/back"
-            android:clickable="true"
-            android:focusable="true"/>
+        <!-- Header Layout -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Back Button - aligned to start -->
+            <ImageView
+                android:id="@+id/backButton"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentStart="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/back"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <!-- About Button - aligned to end -->
+            <ImageView
+                android:id="@+id/aboutbutton"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentEnd="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/about12"
+                android:clickable="true"
+                android:focusable="true"/>
+        </RelativeLayout>
 
         <!-- Title Text -->
         <TextView
             android:id="@+id/titleText"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:gravity="center"
-            android:fontFamily="@font/parkinsans"
-            android:text="NEW TRAVEL POST"
+            android:fontFamily="@font/parkinsansbold"
+            android:text="New Travel Post"
             android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold"/>
+            android:textSize="24sp" />
     </LinearLayout>
 
 
@@ -63,7 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="50dp"
-            android:padding="20dp">
+            android:padding="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -71,8 +87,8 @@
                 android:orientation="vertical"
                 android:background="@drawable/card_bg"
                 android:elevation="8dp"
-                android:padding="20dp"
-                android:layout_margin="8dp"
+                android:padding="15dp"
+                android:layout_margin="5dp"
                 android:clipToPadding="false">
 
 
@@ -81,10 +97,12 @@
                     android:id="@+id/placeName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/hostgroteskvariablefont_wght"
+                    android:textStyle="bold"
                     android:layout_marginTop="6dp"
                     android:hint="Place Name"
                     android:background="@drawable/edittext_border"
-                    android:padding="16dp"
+                    android:padding="10dp"
                     android:textColor="#000000"
                     />
 
@@ -94,7 +112,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:hint="Short Description"
+                    android:hint="Short Description....."
+                    android:fontFamily="@font/hostgroteskvariablefont_wght"
+                    android:textStyle="bold"
                     android:minHeight="120dp"
                     android:gravity="top"
                     android:background="@drawable/edittext_border"
@@ -109,9 +129,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:hint="Latitude"
+                    android:fontFamily="@font/hostgroteskvariablefont_wght"
+                    android:textStyle="bold"
                     android:inputType="numberDecimal"
                     android:background="@drawable/edittext_border"
-                    android:padding="16dp"
+                    android:padding="10dp"
                     android:textColor="#000000"
                     />
 
@@ -122,13 +144,32 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:hint="Longitude"
+                    android:fontFamily="@font/hostgroteskvariablefont_wght"
+                    android:textStyle="bold"
                     android:inputType="numberDecimal"
                     android:background="@drawable/edittext_border"
-                    android:padding="16dp"
+                    android:padding="10dp"
                     android:textColor="#000000"
                     />
 
                 <!-- Image Upload Section -->
+
+                <Button
+                    android:id="@+id/btnUploadImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Click here to Ipload Image"
+                    android:fontFamily="@font/parkinsans"
+                    android:textStyle="bold"
+                    android:backgroundTint="#F46D3B"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="25dp"
+                    android:padding="14dp"
+                    android:textSize="16sp"
+                    />
                 <ImageView
                     android:id="@+id/ivSelectedImage"
                     android:layout_width="100dp"
@@ -136,25 +177,9 @@
                     android:layout_marginTop="10dp"
                     android:layout_gravity="center"
                     android:scaleType="centerCrop"
-                    android:background="@drawable/edittext_border"
                     android:src="@drawable/placeholder"
-                    android:layout_marginBottom="12dp"
-                    android:padding="5dp"
                     />
 
-                <Button
-                    android:id="@+id/btnUploadImage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Upload"
-                    android:fontFamily="@font/parkinsans"
-                    android:textStyle="bold"
-                    android:backgroundTint="#F46D3B"
-                    android:textColor="@color/white"
-                    android:padding="14dp"
-                    android:textSize="16sp"
-                    />
 
 
                 <!-- Save Button -->
@@ -162,12 +187,14 @@
                     android:id="@+id/btnSave"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="POST"
+                    android:text="Post"
+                    android:fontFamily="@font/parkinsans"
                     android:backgroundTint="#F46D3B"
+                    android:textStyle="bold"
                     android:textColor="@color/white"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:padding="14dp"
-                    android:textSize="16sp"/>
+                    android:textSize="18sp"/>
             </LinearLayout>
         </ScrollView>
     </RelativeLayout>

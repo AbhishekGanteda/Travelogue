@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
@@ -22,6 +23,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class ProfileFragment : Fragment() {
+    private lateinit var backButton : ImageView
     private lateinit var searchView: SearchView
     private lateinit var recyclerView: RecyclerView
     private lateinit var searchAdapter: SearchAdapter
@@ -38,6 +40,11 @@ class ProfileFragment : Fragment() {
 
         sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Activity.MODE_PRIVATE)
         loadUserData()
+        backButton = view.findViewById(R.id.backButton)
+        backButton.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+
 
         searchView = view.findViewById(R.id.searchView)
         recyclerView = view.findViewById(R.id.recyclerView)

@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:paddingTop="50dp"
+    android:paddingTop="45dp"
     android:fontFamily="@font/hostgroteskvariablefont_wght"
     android:layout_width="match_parent"
     android:background="@color/orange"
@@ -13,18 +13,52 @@
     tools:context=".SelfFullPost">
 
 
-    <TextView
-        android:id="@+id/titleText"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:fontFamily="@font/parkinsans"
-        android:text="Complete Journal"
-        android:textColor="@color/random2"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:orientation="vertical"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp">
+
+        <!-- Header Layout -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Back Button - aligned to start -->
+            <ImageView
+                android:id="@+id/backButton"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentStart="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/back"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <!-- About Button - aligned to end -->
+            <ImageView
+                android:id="@+id/aboutbutton"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentEnd="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/about12"
+                android:clickable="true"
+                android:focusable="true"/>
+        </RelativeLayout>
+
+        <!-- Title Text -->
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:fontFamily="@font/parkinsansbold"
+            android:text="Complete Journal"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_gravity="center"
@@ -46,7 +80,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_marginTop="20dp"
-            android:padding="16dp"
             tools:context=".FullPost">
 
             <!-- User Info -->

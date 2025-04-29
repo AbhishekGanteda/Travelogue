@@ -101,9 +101,9 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="WELCOME"
+                android:text="Welcome"
                 android:textColor="@color/black"
-                android:fontFamily="@font/hostgrotesk_variablefont_wght"
+                android:fontFamily="@font/parkinsans"
                 android:textSize="26sp"
                 android:textStyle="bold"
                 android:gravity="center"
@@ -190,8 +190,8 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="REGISTER"
-                android:fontFamily="@font/hostgrotesk_variablefont_wght"
+                android:text="Register"
+                android:fontFamily="@font/parkinsans"
                 android:textSize="26sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"

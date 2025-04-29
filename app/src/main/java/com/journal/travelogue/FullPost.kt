@@ -13,6 +13,9 @@ import com.journal.travelogue.api.RetrofitClient.ip
 import com.squareup.picasso.Picasso
 
 class FullPost : AppCompatActivity() {
+
+    private lateinit var backButton : ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -35,6 +38,7 @@ class FullPost : AppCompatActivity() {
         val userNameTextView = findViewById<TextView>(R.id.user_name)
         val profileImageView = findViewById<ImageView>(R.id.profile)
         val placeImageView = findViewById<ImageView>(R.id.image)
+        backButton = findViewById(R.id.backButton)
         val placeNameTextView = findViewById<TextView>(R.id.place_name)
         val descriptionTextView = findViewById<TextView>(R.id.travel_description)
 
@@ -54,5 +58,9 @@ class FullPost : AppCompatActivity() {
             .placeholder(R.drawable.noimage)
             .error(R.drawable.noimage)
             .into(placeImageView)
+
+        backButton.setOnClickListener {
+            finish()
+        }
     }
 }

@@ -15,8 +15,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:hint="Name"
+            android:fontFamily="@font/hostgroteskvariablefont_wght"
+            android:textStyle="bold"
             android:background="@drawable/edittext_border"
-            android:padding="16dp"
+            android:padding="10dp"
             android:textColor="#000000"
             />
 
@@ -27,11 +29,31 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:hint="Email"
+            android:fontFamily="@font/hostgroteskvariablefont_wght"
+            android:textStyle="bold"
             android:background="@drawable/edittext_border"
-            android:padding="16dp"
+            android:padding="10dp"
             android:textColor="#000000"
             />
         <!-- Image Upload Section -->
+        <Button
+            android:id="@+id/uploadImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Click here to Ipload Image"
+            android:fontFamily="@font/parkinsans"
+            android:textStyle="bold"
+            android:backgroundTint="#F46D3B"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:padding="5dp"
+            android:textSize="16sp"
+            />
+
+
         <ImageView
             android:id="@+id/selectedImage"
             android:layout_width="100dp"
@@ -39,25 +61,9 @@
             android:layout_marginTop="10dp"
             android:layout_gravity="center"
             android:scaleType="centerCrop"
-            android:background="@drawable/edittext_border"
             android:src="@drawable/placeholder"
-            android:layout_marginBottom="12dp"
-            android:padding="5dp"
             />
 
-        <Button
-            android:id="@+id/uploadImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Upload"
-            android:fontFamily="@font/parkinsans"
-            android:textStyle="bold"
-            android:backgroundTint="#F46D3B"
-            android:textColor="@color/white"
-            android:padding="14dp"
-            android:textSize="16sp"
-            />
 
 
         <!-- Save Button -->

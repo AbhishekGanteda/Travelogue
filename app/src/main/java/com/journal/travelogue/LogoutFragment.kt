@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.widget.ImageView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,7 +39,7 @@ import java.io.FileOutputStream
 import java.io.InputStream
 
 class LogoutFragment : Fragment() {
-
+    private lateinit var backButton : ImageView
     private lateinit var nameText: TextView
     private lateinit var profileImage: ImageView
     private lateinit var editButton: Button
@@ -72,6 +73,10 @@ class LogoutFragment : Fragment() {
         followersCount = view.findViewById(R.id.followersCount)
         followingCount = view.findViewById(R.id.followingCount)
         postsCount = view.findViewById(R.id.posts)
+        backButton = view.findViewById(R.id.backButton)
+        backButton.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
 
         sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Activity.MODE_PRIVATE)
 

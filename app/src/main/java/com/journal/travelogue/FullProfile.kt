@@ -26,6 +26,8 @@ import retrofit2.Response
 
 class FullProfile : AppCompatActivity() {
     private var user: User? = null
+    private lateinit var backButton : ImageView
+
     private lateinit var sharedPreferences: android.content.SharedPreferences
     private lateinit var recyclerView2: RecyclerView
     private lateinit var postAdapter: ProfilePostAdapter
@@ -65,6 +67,7 @@ class FullProfile : AppCompatActivity() {
         val followingCountTV = findViewById<TextView>(R.id.followingCount)
         val postsCountTV = findViewById<TextView>(R.id.posts)
         val followButton = findViewById<Button>(R.id.follow)
+        backButton = findViewById(R.id.backButton)
 
         userNameTV.text = userName
         getFollowersCount(userId) { count ->
@@ -73,6 +76,10 @@ class FullProfile : AppCompatActivity() {
 
         getFollowingCount(userId) { count ->
             followingCountTV.text = count.toString()
+        }
+
+        backButton.setOnClickListener {
+            finish()
         }
 
         postsCountTV.text = postsCount
